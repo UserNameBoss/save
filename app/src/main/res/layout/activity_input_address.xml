@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.kg.konggang_guide.other.activity.InputAddressActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_22"
+        android:background="@color/theme_white"/>
+    <LinearLayout
+        android:gravity="center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_50"
+        android:background="@color/theme_white">
+
+
+        <LinearLayout
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:layout_marginTop="@dimen/dimen_5"
+            android:layout_marginBottom="@dimen/dimen_5"
+            android:layout_marginLeft="@dimen/dimen_20"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@drawable/shape_bg_4_grey02">
+
+            <ImageView
+                android:layout_marginLeft="@dimen/dimen_10"
+                android:layout_width="@dimen/dimen_20"
+                android:layout_height="@dimen/dimen_20"
+                android:src="@mipmap/app_search"/>
+
+
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+
+
+                <Spinner
+                    android:layout_marginLeft="@dimen/dimen_15"
+                    android:layout_width="@dimen/dimen_65"
+                    android:layout_height="match_parent"
+                    android:id="@+id/sp_city"
+                    android:spinnerMode="dropdown"
+                    android:dropDownWidth="@dimen/dimen_100"
+                    android:dropDownVerticalOffset="@dimen/dimen_30">
+                </Spinner>
+
+                <LinearLayout
+                    android:layout_gravity="center_vertical"
+                    android:clickable="false"
+                    android:background="@color/color_f3f5f9"
+                    android:gravity="center_vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:layout_marginLeft="@dimen/dimen_15"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="深圳市"
+                        android:id="@+id/tv_city"
+                        android:textSize="@dimen/theme_text_16"
+                        android:textColor="@color/color_333333"/>
+
+                    <ImageView
+                        android:visibility="visible"
+                        android:layout_marginLeft="@dimen/dimen_5"
+                        android:layout_width="@dimen/dimen_10"
+                        android:layout_height="@dimen/dimen_7"
+                        android:src="@mipmap/drop_down"/>
+
+                </LinearLayout>
+
+
+
+            </FrameLayout>
+
+            <View
+                android:layout_marginTop="@dimen/dimen_5"
+                android:layout_marginBottom="@dimen/dimen_5"
+                android:layout_marginLeft="@dimen/dimen_15"
+                android:layout_width="@dimen/dimen_0.5"
+                android:layout_height="match_parent"
+                android:background="@color/color_a5a5a5"/>
+
+
+            <EditText
+                android:imeOptions=""
+                android:id="@+id/et_address"
+                android:layout_marginLeft="@dimen/dimen_15"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="请输入地址"
+                android:textColor="@color/color_a5a5a5"
+                android:textColorHint="@color/color_a5a5a5"
+                android:background="@null"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_cancel"
+            android:layout_marginLeft="@dimen/dimen_33"
+            android:layout_marginRight="@dimen/dimen_30"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/color_333333"
+            android:textSize="@dimen/theme_text_16"
+            android:text="取消"/>
+
+    </LinearLayout>
+
+
+    <com.jcodecraeer.xrecyclerview.XRecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/dimen_75"
+        android:layout_marginRight="@dimen/dimen_75"
+        android:id="@+id/xrl_search"></com.jcodecraeer.xrecyclerview.XRecyclerView>
+
+</LinearLayout>

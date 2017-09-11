@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.kg.konggang_guide.other.activity.PriceActivity">
+
+    <include layout="@layout/aaa_app_title"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/dimen_20"
+        android:background="@color/theme_white">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:id="@+id/ll_car"
+                android:layout_marginTop="@dimen/dimen_60"
+                android:layout_marginLeft="@dimen/dimen_50"
+                android:layout_marginRight="@dimen/dimen_65"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/img_official"
+                android:layout_width="@dimen/dimen_217"
+                android:layout_height="@dimen/dimen_77"
+                android:src="@mipmap/official"/>
+
+            <TextView
+                android:id="@+id/tv_official"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="公务轿车"
+                android:textColor="@color/color_38adff"
+                android:textSize="@dimen/theme_text_20"/>
+
+            <View
+                android:id="@+id/v_line_official"
+                android:layout_width="@dimen/dimen_100"
+                android:layout_height="@dimen/dimen_3"
+                android:background="@color/color_38adff"/>
+
+            <ImageView
+                android:id="@+id/img_business"
+                android:layout_marginTop="@dimen/dimen_28"
+                android:layout_width="@dimen/dimen_217"
+                android:layout_height="@dimen/dimen_77"
+                android:src="@mipmap/business"/>
+
+            <TextView
+                android:id="@+id/tv_business"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="商务七座"
+                android:textColor="@color/color_333333"
+                android:textSize="@dimen/theme_text_20"/>
+
+            <View
+                android:visibility="invisible"
+                android:id="@+id/v_line_business"
+                android:layout_width="@dimen/dimen_100"
+                android:layout_height="@dimen/dimen_3"
+                android:background="@color/color_38adff"/>
+
+
+                <ImageView
+                    android:id="@+id/img_limousine"
+                    android:layout_width="@dimen/dimen_217"
+                    android:layout_height="@dimen/dimen_77"
+                    android:layout_marginTop="@dimen/dimen_28"
+                    android:src="@mipmap/limousine02" />
+
+                <TextView
+                android:id="@+id/tv_limousine"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="公务轿车"
+                android:textColor="@color/color_333333"
+                android:textSize="@dimen/theme_text_20"/>
+
+            <View
+                android:visibility="invisible"
+                android:id="@+id/v_line_limousine"
+                android:layout_width="@dimen/dimen_100"
+                android:layout_height="@dimen/dimen_3"
+                android:background="@color/color_38adff"/>
+            </LinearLayout>
+
+            <View
+                android:layout_marginTop="@dimen/dimen_60"
+                android:layout_toRightOf="@+id/ll_car"
+                android:layout_width="@dimen/dimen_0.5"
+                android:layout_height="match_parent"
+                android:background="@color/color_d7d7d7"/>
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/dimen_105"
+            android:paddingRight="@dimen/dimen_115"
+            android:layout_marginTop="@dimen/dimen_60"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textColor="@color/color_333333"
+                    android:textSize="@dimen/theme_text_20"
+                    android:text="里程费"/>
+
+                <TextView
+                    android:id="@+id/tv_price_km"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/theme_text_20"
+                    android:textColor="@color/color_333333"
+                    android:text="1.8元/公里"/>
+
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/theme_text_18"
+                android:textColor="@color/color_a5a5a5"
+                android:text="每0.1公里结算："
+                android:layout_marginTop="@dimen/dimen_20"/>
+
+
+            <LinearLayout
+                android:layout_marginTop="@dimen/dimen_16"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/color_a5a5a5"
+                    android:textSize="@dimen/theme_text_18"
+                    android:text="23:00-00:00"/>
+
+
+                <TextView
+                    android:id="@+id/tv_price_23_00"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/color_a5a5a5"
+                    android:textSize="@dimen/theme_text_18"
+                    android:text="2.6元/公里"/>
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_marginTop="@dimen/dimen_10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/color_a5a5a5"
+                    android:textSize="@dimen/theme_text_18"
+                    android:text="00:00-05:00"/>
+
+
+                <TextView
+                    android:id="@+id/tv_price_00_05"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/color_a5a5a5"
+                    android:textSize="@dimen/theme_text_18"
+                    android:text="2.6元/公里"/>
+
+
+            </LinearLayout>
+
+
+            <ImageView
+                android:layout_marginTop="@dimen/dimen_26"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/line_01"
+                android:scaleType="fitXY"/>
+
+
+
+            <LinearLayout
+                android:layout_marginTop="@dimen/dimen_35"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textColor="@color/color_333333"
+                    android:textSize="@dimen/theme_text_20"
+                    android:text="时长费(50分钟)"/>
+
+                <TextView
+                    android:id="@+id/tv_price_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/theme_text_20"
+                    android:textColor="@color/color_333333"
+                    android:text="10.5元/分钟"/>
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_marginTop="@dimen/dimen_35"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/color_a5a5a5"
+                    android:textSize="@dimen/theme_text_18"
+                    android:text="最低消费"/>
+
+
+                <TextView
+                    android:id="@+id/tv_priceMin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#f44b4b"
+                    android:textSize="@dimen/theme_text_20"
+                    android:text="13元"
+                    />
+
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_marginTop="@dimen/dimen_20"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/color_a5a5a5"
+                android:textSize="@dimen/theme_text_18"
+                android:text="里程费、市场费合计不足最低消费时，直接按最低消费额计算"/>
+
+
+
+
+
+            <LinearLayout
+                android:layout_marginTop="@dimen/dimen_45"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textColor="@color/color_333333"
+                    android:textSize="@dimen/theme_text_20"
+                    android:text="远途费"/>
+
+                <TextView
+                    android:id="@+id/tv_farPrice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/theme_text_20"
+                    android:textColor="@color/color_333333"
+                    android:text="1.8元/公里"/>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="@dimen/dimen_20"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/color_a5a5a5"
+                    android:textSize="@dimen/theme_text_18"
+                    android:text="超过20公里后，加收远途费"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+</LinearLayout>
+</LinearLayout>

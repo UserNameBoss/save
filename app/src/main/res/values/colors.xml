@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="theme_bg">#FFf7f9fd</color>
+    <color name="theme_bg_new">#f8f8f8</color>
+    <color name="divide_line">#d7d7d7</color>
+    <color name="theme_tab_nor">#808080</color>
+
+    <color name="theme_title">#FF222222</color>
+    <color name="theme_title_small">#FF666666</color>
+    <color name="theme_title_normal">#FF222222</color>
+    <color name="theme_title_focus">#FFFFFFFF</color>
+    <color name="theme_title_bg">#FFFAFAFA</color>
+    <color name="theme_title_focus_bg">#FFffc82f</color>
+    <color name="theme_focus">#2a2f33</color>
+    <color name="theme_focus_1">#5069ac</color>
+
+    <color name="theme_fore">#FFFFFFFF</color>
+    <color name="theme_fore_bg">#FFFFFFFF</color>
+    <color name="theme_fore_bg_focus">#FFF2F2F2</color>
+    <color name="theme_tab">#FF7D7D7D</color>
+    <color name="theme_tab_focus">#4797ee</color>
+    <color name="theme_tab_bg">#FFFAFAFA</color>
+    <color name="theme_tab_focus_bg">#FFFAFAFA</color>
+
+    <color name="theme_menu">#FF7D7D7D</color>
+    <color name="theme_menu_focus">#FFFF6A0E</color>
+    <color name="theme_menu_bg">#FFFAFAFA</color>
+    <color name="theme_menu_info">#FF666666</color>
+    <color name="theme_menu_focus_bg">#FFF8F8F8</color>
+    <!-- 转圈-->
+    <color name="transparent">#00000000</color>
+
+    <color name="theme_text">#2b2b2b</color>
+    <color name="theme_pop">#FF666666</color>
+    <color name="theme_text_dark">#FF444444</color>
+    <color name="theme_text_darker">#FF000000</color>
+    <color name="theme_text_light">#FF606060</color>
+    <color name="theme_text_lighter">#FF888888</color>
+    <color name="theme_line_color">#FFEBEBEB</color>
+    <color name="theme_text_hot">#ff415b</color>
+
+    <color name="theme_button_bg">#ffc77b10</color>
+    <color name="theme_button_bg_focus">#ffe4770b</color>
+    <color name="theme_button">#FFFFFFFF</color>
+    <color name="theme_button_focus">#FFFFFFFF</color>
+    <color name="theme_edittext_bg">#FAFAFA</color>
+    <color name="theme_dialog_title">#FF222222</color>
+    <color name="theme_dialog_button">#FF222222</color>
+    <color name="theme_dialog_button_focus">#FFDDDDDD</color>
+    <color name="theme_dialog_button_bg">#FFFFFFFF</color>
+
+    <color name="theme_line">#eaeaea</color>
+    <color name="theme_my_line">#FFE9E9E9</color>
+    <color name="theme_tag">#FF00ccFF</color>
+    <color name="theme_tag_bg">#FF00ccFF</color>
+
+    <color name="theme_dark">#FF222222</color>
+    <color name="theme_light">#FFEEEEEE</color>
+
+    <color name="theme_red">#FFFF6162</color>
+    <color name="theme_redr">#FFFF6060</color>
+    <color name="theme_reder">#E65656</color>
+    <color name="theme_orange">#FFFC643B</color>
+    <color name="theme_yellow">#FFec9d28</color>
+    <color name="theme_light_blue">#FF0ac5fd</color>
+    <color name="theme_white">#FFFFFFFF</color>
+    <color name="theme_black">#FF000000</color>
+    <color name="theme_green">#FF00FF00</color>
+    <color name="theme_dark_green">#FF9ACE5E</color>
+    <color name="theme_blue">#FF0000FF</color>
+    <color name="theme_bluer">#FF48ABFF</color>
+    <color name="theme_green_light">#45D4B8</color>
+    <color name="theme_blue_light">#58B5FB</color>
+    <color name="theme_orange_light">#FFA44D</color>
+
+    <color name="theme_bg_lightgrey">#FFf0eff4</color>
+    <color name="theme_text_grey">#a5a5a5</color>
+    <color name="login_bg">#cc989693</color>
+    <color name="login_text">#BFBEBD</color>
+
+    <color name="click_normal">#c7e6fd</color>
+    <color name="theme_dot_unselect">#4cffffff</color>
+
+    <color name="theme_text_434c6e">#434c6e</color>
+    <color name="theme_color_eceff4">#eceff4</color>
+    <color name="theme_text_b6bbcc">#b6bbcc</color>
+    <color name="theme_text_ff5055">#ff5055</color>
+    <color name="theme_text_414d58">#414d58</color>
+
+    <color name="color_f7f9fd">#f7f9fd</color>
+    <color name="color_8d95a4">#8d95a4</color>
+    <color name="color_9fc8f5">#9fc8f5</color>
+    <color name="color_434c6e">#434c6e</color>
+    <color name="color_d7d7d7">#d7d7d7</color>
+    <color name="color_b6bbcc">#b6bbcc</color>
+    <color name="color_7e8593">#7e8593</color>
+    <color name="color_6c7495">#6c7495</color>
+    <color name="color_ff5055">#ff5055</color>
+    <color name="color_a3cbf6">#a3cbf6</color>
+    <color name="color_7fb6f3">#7fb6f3</color>
+    <color name="color_808080">#808080</color>
+    <color name="color_c5ad82">#c5ad82</color>
+    <color name="color_c2c2c2">#c2c2c2</color>
+    <color name="color_e2d6c0">#e2d6c0</color>
+    <color name="color_a5a5a5">#a5a5a5</color>
+    <color name="color_f3f5f9">#f3f5f9</color>
+    <color name="color_eaa325">#eaa325</color>
+    <color name="color_fcfcfc">#fcfcfc</color>
+    <color name="color_F36A45">#F36A45</color>
+    <color name="color_767676">#767676</color>
+    <color name="color_f36a45">#f36a45</color>
+    <color name="color_38adff">#38adff</color>
+    <color name="color_77000000">#77000000</color>
+    <color name="color_333333">#333333</color>
+    <color name="color_EAEAEA">#EAEAEA</color>
+    <color name="color_38ADFF">#38ADFF</color>
+    <color name="color_b3b3b3">#b3b3b3</color>
+    <color name="color_666666">#666666</color>
+    <color name="color_f44b4b">#f44b4b</color>
+    <color name="color_88_38ADFF">#8838adff</color>
+    <color name="color_2A2F33">#2A2F33</color>
+    <color name="color_462804">#462804</color>
+</resources>

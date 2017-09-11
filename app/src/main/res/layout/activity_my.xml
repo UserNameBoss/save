@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.kg.konggang_guide.personal.activity.MyActivity">
+
+   <RelativeLayout
+       android:layout_width="match_parent"
+       android:layout_height="@dimen/dimen_302"
+       android:background="@mipmap/bg_111">
+
+       <ImageView
+           android:id="@+id/img_back"
+           android:layout_marginLeft="@dimen/dimen_20"
+           android:layout_marginTop="@dimen/dimen_22"
+           android:layout_width="@dimen/dimen_11"
+           android:layout_height="@dimen/dimen_17"
+           android:src="@mipmap/return_1"/>
+
+       <ImageView
+           android:id="@+id/img_icon"
+           android:layout_centerInParent="true"
+           android:layout_width="@dimen/dimen_100"
+           android:layout_height="@dimen/dimen_100"
+           android:layout_centerHorizontal="true"
+           android:src="@mipmap/touxiang">
+       </ImageView>
+
+       <TextView
+           android:id="@+id/tv_name"
+           android:layout_below="@+id/img_icon"
+           android:layout_marginTop="@dimen/dimen_27"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="引导员"
+           android:textSize="@dimen/theme_text_18"
+           android:textColor="@color/theme_white"
+           android:layout_centerHorizontal="true"/>
+
+   </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_order"
+        android:layout_marginTop="@dimen/dimen_32"
+        android:layout_marginLeft="@dimen/dimen_180"
+        android:layout_marginRight="@dimen/dimen_180"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical">
+        <TextView
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/theme_text_20"
+            android:textColor="@color/color_333333"
+            android:text="最近订单"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/jiantou"/>
+    </LinearLayout>
+
+    <View
+        android:layout_marginTop="@dimen/dimen_17"
+        android:layout_marginLeft="@dimen/dimen_75"
+        android:layout_marginRight="@dimen/dimen_75"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_1"
+        android:background="@color/color_d7d7d7"/>
+
+    <LinearLayout
+        android:layout_marginTop="@dimen/dimen_30"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="小程序二维码"
+                android:textSize="@dimen/dimen_20"
+                android:textColor="@color/color_333333"/>
+            
+            <ImageView
+                android:id="@+id/img_01"
+                android:layout_marginTop="@dimen/dimen_10"
+                android:layout_width="@dimen/dimen_200"
+                android:layout_height="@dimen/dimen_200"
+                android:src="@color/color_38adff"/>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_marginLeft="@dimen/dimen_100"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="APP二维码"
+                android:textSize="@dimen/dimen_20"
+                android:textColor="@color/color_333333"/>
+
+            <ImageView
+                android:id="@+id/img_02"
+                android:layout_marginTop="@dimen/dimen_10"
+                android:layout_width="@dimen/dimen_200"
+                android:layout_height="@dimen/dimen_200"
+                android:src="@color/color_38adff"/>
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:gravity="center_horizontal"
+        android:layout_marginTop="@dimen/dimen_50"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="联系客服："
+            android:textSize="@dimen/theme_text_20"/>
+
+        <TextView
+            android:id="@+id/tv_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="18343443"
+            android:textSize="@dimen/theme_text_20"
+            android:textColor="@color/color_38adff"/>
+    </LinearLayout>
+
+</LinearLayout>

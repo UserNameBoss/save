@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.kg.konggang_guide.other.activity.FixedPriceActivity">
+
+    <include layout="@layout/aaa_app_title"/>
+
+    <LinearLayout
+        android:layout_marginTop="@dimen/y9"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/theme_white"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_marginTop="@dimen/y33"
+            android:gravity="center_horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/color_333333"
+            android:text="一口价"
+            android:textSize="@dimen/y19"/>
+
+        <LinearLayout
+            android:layout_marginTop="@dimen/y39"
+            android:gravity="center_horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:textSize="@dimen/y21"
+                android:text="194"
+                android:textColor="@color/color_f44b4b"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/color_f44b4b"
+                android:textSize="@dimen/y15"
+                android:text="元"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:gravity="center_horizontal"
+            android:layout_marginBottom="@dimen/y47"
+            android:layout_marginTop="@dimen/y24"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/y13"
+                android:textColor="@color/color_333333"
+                android:text="预估行程"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/y13"
+                android:textColor="@color/color_38adff"
+                android:text="22"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/y13"
+                android:textColor="@color/color_333333"
+                android:text="公里，预估时长"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/y13"
+                android:textColor="@color/color_38adff"
+                android:text="34"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/y13"
+                android:textColor="@color/color_333333"
+                android:text="分钟"/>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <TextView
+        android:paddingLeft="@dimen/x51"
+        android:paddingRight="@dimen/x51"
+        android:paddingTop="@dimen/y16"
+        android:paddingBottom="@dimen/y16"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/color_333333"
+        android:textSize="@dimen/y11"
+        android:text="一口价包含一次接机服务过程中的所有行驶费用，含高速费，停车费，不支持路线更换，更换带来的其他费用，后续继续收取。"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/theme_white"
+        android:layout_weight="1">
+    </LinearLayout>
+
+
+
+</LinearLayout>

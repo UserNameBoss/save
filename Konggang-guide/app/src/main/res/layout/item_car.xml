@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+    <LinearLayout
+        android:layout_centerInParent="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/theme_white">
+
+
+    <ImageView
+        android:layout_marginTop="@dimen/y19"
+        android:id="@+id/img_carIcon"
+        android:layout_marginLeft="@dimen/x5"
+        android:layout_width="@dimen/y44"
+        android:layout_height="@dimen/y44"
+        android:src="@mipmap/default_avatar"/>
+
+    <LinearLayout
+        android:layout_marginBottom="@dimen/y19"
+        android:layout_marginTop="@dimen/y19"
+        android:layout_marginLeft="@dimen/x4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="老司机"
+                android:textSize="@dimen/y10"
+                android:textColor="@color/color_333333"
+                android:id="@+id/tv_name"/>
+
+            <TextView
+                android:paddingLeft="@dimen/x2"
+                android:paddingRight="@dimen/x2"
+                android:layout_marginLeft="@dimen/x3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#fdb92c"
+                android:textColor="@color/theme_white"
+                android:text="1号泊车位"
+                android:id="@+id/tv_carLocation"
+                android:textSize="@dimen/y8"/>
+        </LinearLayout>
+
+        <TextView
+            android:layout_marginTop="@dimen/y7"
+            android:gravity="center"
+            android:id="@+id/tv_carCode"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/y11"
+            android:background="@drawable/shape_car_code_bg"
+            android:paddingLeft="@dimen/x2"
+            android:paddingRight="@dimen/x2"
+            android:textSize="@dimen/y8"
+            android:text="粤0000101" />
+
+        <LinearLayout
+            android:layout_marginTop="@dimen/y3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_weight="1"
+                android:gravity="bottom"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:textSize="@dimen/y9"
+                android:textColor="@color/color_a5a5a5"
+                android:text="156434454545"
+                android:id="@+id/tv_phone"/>
+
+            <TextView
+                android:id="@+id/tv_ToCar"
+                android:layout_width="@dimen/x21"
+                android:layout_height="@dimen/y16"
+                android:background="@drawable/shape_blue_2_bg"
+                android:text="派车"
+                android:gravity="center"
+                android:textColor="@color/theme_white"
+                android:textSize="@dimen/y10"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+  </LinearLayout>
+
+</LinearLayout>

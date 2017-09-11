@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <TextView
+        android:layout_marginTop="@dimen/dimen_15"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="深圳机场"
+        android:id="@+id/tv_location"
+        android:textSize="@dimen/theme_text_20"
+        android:textColor="@color/color_333333"/>
+
+    <LinearLayout
+        android:gravity="center_vertical"
+        android:layout_marginTop="@dimen/dimen_25"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <TextView
+            android:id="@+id/tv_address"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/theme_text_20"
+            android:textColor="@color/color_333333"
+            android:text="这是那条路啊"/>
+
+        <ImageView
+            android:id="@+id/img_delete"
+            android:layout_width="@dimen/dimen_25"
+            android:layout_height="@dimen/dimen_25"
+            android:src="@mipmap/delete"/>
+
+    </LinearLayout>
+
+    <View
+        android:layout_marginTop="@dimen/dimen_33"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_0.5"
+        android:background="@color/color_d7d7d7"></View>
+
+</LinearLayout>
