@@ -112,9 +112,11 @@ public class AddressAdapter extends RecyclerView.Adapter<AddressAdapter.ViewHold
                     if(!TextUtils.isEmpty(dataEntity.terminalBuilding)){
                         String[] terminals=addressBean.data.get(i).terminalBuilding.split(",");
                         for(int j=0;j<terminals.length;j++){
-                            arrayList.add(dataEntity.airportAddress+dataEntity.airportName+terminals[j]);
-                            arrayIdList.add(dataEntity.id+"");
-                            arrayListName.add(dataEntity.airportAddress+dataEntity.airportName);
+                            if(!TextUtils.isEmpty(terminals[j])) {
+                                arrayList.add(dataEntity.airportAddress + dataEntity.airportName + terminals[j]);
+                                arrayIdList.add(dataEntity.id + "");
+                                arrayListName.add(dataEntity.airportAddress + dataEntity.airportName);
+                            }
                         }
                     }
                 }

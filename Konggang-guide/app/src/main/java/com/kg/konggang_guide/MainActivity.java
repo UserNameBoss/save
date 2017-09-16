@@ -7,8 +7,11 @@ import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.text.Editable;
+import android.text.SpannableString;
+import android.text.Spanned;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.text.style.ForegroundColorSpan;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.WindowManager;
@@ -29,6 +32,7 @@ import com.kg.konggang_guide.other.base.CpBaseActivty;
 import com.kg.konggang_guide.other.bean.DriverListBean;
 import com.kg.konggang_guide.other.bean.OrderBean;
 import com.kg.konggang_guide.other.event.MyEvent;
+import com.kg.konggang_guide.other.event.OrderEvent;
 import com.kg.konggang_guide.other.presenter.MainPresenter;
 import com.kg.konggang_guide.other.utils.DebugUtils;
 import com.kg.konggang_guide.other.utils.DialogUtils;
@@ -43,8 +47,13 @@ import com.kg.konggang_guide.personal.activity.MyActivity;
 import com.squareup.picasso.Picasso;
 import com.tbruyelle.rxpermissions2.RxPermissions;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -128,6 +137,14 @@ public class MainActivity extends CpBaseActivty implements TextWatcher, IMainVie
     TextView tvLogin;
     @BindView(R.id.ll_flight02)
     LinearLayout llFlight02;
+    @BindView(R.id.tv_changeHint)
+    TextView tvChangeHint;
+    @BindView(R.id.ll_changeGuideChild)
+    LinearLayout llChangeGuideChild;
+    @BindView(R.id.tv_orderHint)
+    TextView tvOrderHint;
+    @BindView(R.id.ll_orderChild)
+    LinearLayout llOrderChild;
 
     private ArrayList<Fragment> fragmentArrayList = new ArrayList<>();
     private AwaitServiceFragment awaitServiceFragment, awaitOrderFragment;
@@ -168,8 +185,8 @@ public class MainActivity extends CpBaseActivty implements TextWatcher, IMainVie
     protected void initViews() {
 
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-       // supportTitleStatus(true);
-        setMiuiStatusBarDarkMode(this,true);
+        // supportTitleStatus(true);
+        setMiuiStatusBarDarkMode(this, true);
         requestRxPermissions(Manifest.permission.ACCESS_COARSE_LOCATION,
                 Manifest.permission.ACCESS_FINE_LOCATION,
                 Manifest.permission.WRITE_EXTERNAL_STORAGE,
@@ -245,7 +262,7 @@ public class MainActivity extends CpBaseActivty implements TextWatcher, IMainVie
                 tvPhone.setText(dataEntity.telephone);
                 tvFrom.setText(dataEntity.departureLocation);
                 tvTo.setText(dataEntity.arrivedLocation);
-                if(vpager.getCurrentItem()!=0) {
+                if (vpager.getCurrentItem() != 0) {
                     vpager.setCurrentItem(0);
                 }
             }
@@ -262,19 +279,20 @@ public class MainActivity extends CpBaseActivty implements TextWatcher, IMainVie
                 if ("2".equals(dataEntity.type)) {
                     llFlight02.setVisibility(View.VISIBLE);
                     tvFlight.setText(dataEntity.flightNumber);
-                }else{
+                } else {
                     llFlight02.setVisibility(View.GONE);
                 }
                 tvOrderTime.setText(TimeUtils.getDateWithTime(dataEntity.upTime));
                 tvOrderPhone.setText(dataEntity.telephone);
                 tvOrderFrom.setText(dataEntity.departureLocation);
                 tvOrderTo.setText(dataEntity.arrivedLocation);
-                if(vpager.getCurrentItem()!=1) {
+                if (vpager.getCurrentItem() != 1) {
                     vpager.setCurrentItem(1);
                 }
             }
         });
         awaitOrderFragment.setType(1);
+        awaitServiceFragment.setType(0);
         fragmentArrayList.add(awaitServiceFragment);
         fragmentArrayList.add(awaitOrderFragment);
         awaitPagerAdapter = new AwaitPagerAdapter(getSupportFragmentManager());
@@ -293,6 +311,8 @@ public class MainActivity extends CpBaseActivty implements TextWatcher, IMainVie
                     llChangeGuide.setVisibility(View.VISIBLE);
                     llOrder.setVisibility(View.GONE);
                     tvTitle.setText("派车");
+
+
                 } else {
                     llOrder.setVisibility(View.VISIBLE);
                     llChangeGuide.setVisibility(View.GONE);
@@ -310,15 +330,15 @@ public class MainActivity extends CpBaseActivty implements TextWatcher, IMainVie
         carAdapter.setOnClickCar(new CarAdapter.OnClickCar() {
             @Override
             public void toCar(final int position) {
-                if(!TextUtils.isEmpty(orderId01)) {
+                if (!TextUtils.isEmpty(orderId01)) {
                     DialogUtils.toCarDialog(MainActivity.this, "确认派车？", "确定", new DialogUtils.OnClickListener() {
                         @Override
                         public void onClickRight() {
-                            dirId=driverList.data.get(position).uId+"";
+                            dirId = driverList.data.get(position).uId + "";
                             mainPresenter.toCar();
                         }
                     });
-                }else{
+                } else {
                     showToask("您还未选择订单！");
                 }
             }
@@ -356,7 +376,7 @@ public class MainActivity extends CpBaseActivty implements TextWatcher, IMainVie
                 vpager.setCurrentItem(1);
                 break;
             case R.id.tv_chanageGuide:
-                if(!TextUtils.isEmpty(orderId01)) {
+                if (!TextUtils.isEmpty(orderId01)) {
                     DialogUtils.changeGuideDialog(MainActivity.this, new DialogUtils.OnCommitMessage() {
 
 
@@ -367,7 +387,7 @@ public class MainActivity extends CpBaseActivty implements TextWatcher, IMainVie
                             mainPresenter.setChangeGuide();
                         }
                     });
-                }else{
+                } else {
                     showToask("您还未选择订单！");
                 }
                 break;
@@ -395,12 +415,12 @@ public class MainActivity extends CpBaseActivty implements TextWatcher, IMainVie
                 openActivity(MyActivity.class);
                 break;
             case R.id.tv_order:
-                if(!TextUtils.isEmpty(orderId02)) {
+                if (!TextUtils.isEmpty(orderId02)) {
                     mainPresenter.getOrder();
-                }else{
+                } else {
                     showToask("您还未选择订单！");
                 }
-            break;
+                break;
 
         }
     }
@@ -461,8 +481,8 @@ public class MainActivity extends CpBaseActivty implements TextWatcher, IMainVie
     public void isChangeGuide() {
         showToask("改派成功！");
 
-        orderId01 ="";
-        order01Type ="";
+        orderId01 = "";
+        order01Type = "";
         tvFlight01.setText("");
         llFlight01.setVisibility(View.GONE);
         tvTime.setText("");
@@ -485,8 +505,8 @@ public class MainActivity extends CpBaseActivty implements TextWatcher, IMainVie
     @Override
     public void getOrderSuccess() {
         showToask("接单成功！");
-        orderId02 ="";
-        order02Type ="";
+        orderId02 = "";
+        order02Type = "";
         tvFlight.setText("");
         llFlight02.setVisibility(View.GONE);
         tvOrderTime.setText("");
@@ -516,8 +536,8 @@ public class MainActivity extends CpBaseActivty implements TextWatcher, IMainVie
     public void isSendCarSuccess() {
         showToask("派车成功！");
 
-        orderId01 ="";
-        order01Type ="";
+        orderId01 = "";
+        order01Type = "";
         tvFlight01.setText("");
         llFlight01.setVisibility(View.GONE);
         tvTime.setText("");
@@ -532,35 +552,34 @@ public class MainActivity extends CpBaseActivty implements TextWatcher, IMainVie
 
     @Override
     public void setMessageNoRead(int count) {
-        if(count>0) {
-            tvMsgCount.setText(count+"");
+        if (count > 0) {
+            tvMsgCount.setText(count + "");
             tvMsgCount.setVisibility(View.VISIBLE);
         }
     }
 
     @Override
     public void setDriverList(DriverListBean driverList) {
-        if(driverList!=null) {
-            this.driverList = driverList;
-            carAdapter.setDriverListBean(driverList);
-        }
+        this.driverList = driverList;
+        carAdapter.setDriverListBean(driverList);
         xrvCar.refreshComplete();
     }
 
 
     @Subscribe
     public void onEventMainThread(MyEvent myEvent) {
-        if(myEvent.getType()==1){
-            if(myEvent.isRefresh()){
+        if (myEvent.getType() == 1) {
+            if (myEvent.isRefresh()) {
                 awaitServiceFragment.refreshData();
             }
-        }else if(myEvent.getType()==2){
+        } else if (myEvent.getType() == 2) {
             tvMsgCount.setText("0");
             tvMsgCount.setVisibility(View.GONE);
         }
     }
 
     private double lastTime;
+
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
@@ -576,9 +595,75 @@ public class MainActivity extends CpBaseActivty implements TextWatcher, IMainVie
         return false;
     }
 
-        @Override
+    @Override
     protected void onDestroy() {
         super.onDestroy();
         EventBus.getDefault().unregister(this);
+    }
+
+    @Subscribe
+    public void onEventMainThread(OrderEvent orderEvent) {
+        if (orderEvent.getIsRefresh()) {
+            if (orderEvent.getType() == 3) {
+                String message = orderEvent.getMessage();
+                if (!TextUtils.isEmpty(message)) {
+                    try {
+                        JSONObject jsonObject = new JSONObject(message);
+                        int type=jsonObject.getInt("type");
+                        String message1=null;
+                        if(type==1){
+                            message1="您有一笔立即接机的订单，请及时接单。";
+                            DialogUtils.hintMessage(this,matcherSearchText(getResources().getColor(R.color.color_f44b4b),message1,"立即接机"),orderEvent.getCurrTime());
+                        }else{
+                            String timeString=jsonObject.getString("time");
+                            if(!TextUtils.isEmpty(timeString)) {
+                                CharSequence charTime=TimeUtils.getDateWithTime(TimeUtils.getTimeLong(timeString));
+                                message1 = "您有一笔"+charTime+ "的接机订单，请及时接单。";
+                                DialogUtils.hintMessage(this, matcherSearchText(getResources().getColor(R.color.color_38ADFF),message1,charTime.toString()), orderEvent.getCurrTime());
+                            }
+                        }
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+                mainPresenter.getWrite();
+            }
+        }
+    }
+
+    public SpannableString matcherSearchText(int color, String text, String keyword) {
+        SpannableString ss = new SpannableString(text);
+
+        Pattern pattern = Pattern.compile(keyword);
+        Matcher matcher = pattern.matcher(ss);
+
+        while (matcher.find()) {
+            int start = matcher.start();
+            int end = matcher.end();
+            ss.setSpan(new ForegroundColorSpan(color), start, end, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        }
+
+        return ss;
+    }
+
+    public void setLayoutChange(boolean isVisible, int type) {
+        if (type == 0) {
+            if (isVisible) {
+                tvChangeHint.setVisibility(View.GONE);
+                llChangeGuideChild.setVisibility(View.VISIBLE);
+            } else {
+                tvChangeHint.setVisibility(View.VISIBLE);
+                llChangeGuideChild.setVisibility(View.GONE);
+            }
+        } else {
+            if (isVisible) {
+                tvOrderHint.setVisibility(View.GONE);
+                llOrderChild.setVisibility(View.VISIBLE);
+            } else {
+                tvOrderHint.setVisibility(View.VISIBLE);
+                llOrderChild.setVisibility(View.GONE);
+            }
+        }
     }
 }

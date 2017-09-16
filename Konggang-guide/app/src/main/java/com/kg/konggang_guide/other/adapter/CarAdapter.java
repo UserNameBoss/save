@@ -5,7 +5,6 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -13,6 +12,7 @@ import com.jcodecraeer.xrecyclerview.XRecyclerView;
 import com.kg.konggang_guide.MainApplication;
 import com.kg.konggang_guide.R;
 import com.kg.konggang_guide.other.bean.DriverListBean;
+import com.kg.konggang_guide.other.widget.CircleImageView;
 import com.squareup.picasso.Picasso;
 
 import butterknife.BindView;
@@ -83,7 +83,7 @@ public class CarAdapter extends XRecyclerView.Adapter<CarAdapter.ViewHolder> {
 
     static class ViewHolder extends RecyclerView.ViewHolder{
         @BindView(R.id.img_carIcon)
-        ImageView imgCarIcon;
+        CircleImageView imgCarIcon;
         @BindView(R.id.tv_name)
         TextView tvName;
         @BindView(R.id.tv_carLocation)

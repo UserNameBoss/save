@@ -2,6 +2,8 @@ package com.kg.konggang_guide.other.utils;
 
 import android.text.format.DateFormat;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.TimeZone;
 
@@ -76,4 +78,23 @@ public class TimeUtils {
     public static String getCurrentTime(){
         return DateFormat.format("yyyy-MM-dd HH:mm:ss", System.currentTimeMillis()).toString();
     }
+
+    public static String getCurrentTimeHHmm(){
+        return DateFormat.format("yyyy-MM-dd HH:mm", System.currentTimeMillis()).toString();
+    }
+
+    //转换成毫秒
+    public static Long getTimeLong(String formatTime){
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+        try {
+            long millionSeconds = sdf.parse(formatTime).getTime();//毫秒
+
+            return millionSeconds;
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return 0l;
+    }
+
 }

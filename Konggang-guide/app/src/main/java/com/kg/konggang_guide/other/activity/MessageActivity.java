@@ -43,7 +43,6 @@ public class MessageActivity extends CpBaseActivty implements IMessageView {
     @Override
     protected void initViews() {
         StatusBarUtil.setOiStatusBarColor(this);
-        StatusBarUtil.StatusBarLightMode(this);
         supportTitle(true);
         title.setTitleText("消息中心");
         title.setLeftImage(R.mipmap.app_back);

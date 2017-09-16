@@ -5,8 +5,11 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 
 import com.kg.konggang_guide.other.event.OrderEvent;
+import com.kg.konggang_guide.other.utils.DebugUtils;
+import com.kg.konggang_guide.other.utils.TimeUtils;
 
 import cn.jpush.android.api.JPushInterface;
 import de.greenrobot.event.EventBus;
@@ -40,10 +43,18 @@ public class MyMessageReceiver extends BroadcastReceiver {
 //            String title = bundle.getString(JPushInterface.EXTRA_NOTIFICATION_TITLE);
 //            String message = bundle.getString(JPushInterface.EXTRA_ALERT);
 //            String extras = bundle.getString(JPushInterface.EXTRA_EXTRA);
-            //DebugUtils.prinlnLog("====="+title);
-           // DebugUtils.prinlnLog("====="+message);
+            DebugUtils.prinlnLog("====="+title);
+            DebugUtils.prinlnLog("====="+message);
 
-
+            //改派订单刷新待服务列表
+            OrderEvent orderEvent=new OrderEvent();
+            orderEvent.setIsRefresh(true);
+            orderEvent.setType(3);
+            if(!TextUtils.isEmpty(message)) {
+                orderEvent.setMessage(message);
+            }
+            orderEvent.setCurrTime(TimeUtils.getCurrentTimeHHmm());
+            EventBus.getDefault().post(orderEvent);
 
 
         } else if (JPushInterface.ACTION_NOTIFICATION_RECEIVED.equals(intent.getAction())) {
@@ -52,10 +63,11 @@ public class MyMessageReceiver extends BroadcastReceiver {
             String title = bundle.getString(JPushInterface.EXTRA_NOTIFICATION_TITLE);
             String message = bundle.getString(JPushInterface.EXTRA_ALERT);
             String extras = bundle.getString(JPushInterface.EXTRA_EXTRA);
-          //  DebugUtils.prinlnLog("====="+title);
-           // DebugUtils.prinlnLog("====="+message);
+
+            //刷新待接单列表
             OrderEvent orderEvent=new OrderEvent();
             orderEvent.setIsRefresh(true);
+            orderEvent.setType(1);
             EventBus.getDefault().post(orderEvent);
 
 

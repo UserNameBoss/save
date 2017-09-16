@@ -129,6 +129,7 @@ public class InputAddressActivity extends CpBaseActivty implements IInputAddress
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(this);
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         xrlSearch.setLayoutManager(linearLayoutManager);
+        xrlSearch.setPullRefreshEnabled(false);
     }
 
     private void gotoSearch() {

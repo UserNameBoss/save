@@ -106,7 +106,7 @@ public class StringUtil {
     public static boolean isMobile(String str){
         if(str!=null&&str.length()==11){
 //            Pattern p = Pattern.compile("^((13[0-9])|(15[^4,\\D])|(18[0,5-9]))\\d{8}$");
-            Pattern p = Pattern.compile("^[1][358][0-9]{9}$");
+            Pattern p = Pattern.compile("^[1][34578][0-9]{9}$");
             Matcher m = p.matcher(str);
             return m.matches();
         }

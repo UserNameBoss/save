@@ -12,13 +12,14 @@
         android:background="@color/theme_white">
 
 
-    <ImageView
+    <com.kg.konggang_guide.other.widget.CircleImageView
         android:layout_marginTop="@dimen/y19"
         android:id="@+id/img_carIcon"
         android:layout_marginLeft="@dimen/x5"
         android:layout_width="@dimen/y44"
         android:layout_height="@dimen/y44"
-        android:src="@mipmap/default_avatar"/>
+        android:src="@mipmap/default_avatar"
+        android:scaleType="centerCrop"/>
 
     <LinearLayout
         android:layout_marginBottom="@dimen/y19"

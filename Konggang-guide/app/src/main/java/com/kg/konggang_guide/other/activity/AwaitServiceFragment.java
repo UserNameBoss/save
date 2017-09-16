@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 import com.kg.konggang_guide.AppConstants;
+import com.kg.konggang_guide.MainActivity;
 import com.kg.konggang_guide.R;
 import com.kg.konggang_guide.other.adapter.AwaitAdapter;
 import com.kg.konggang_guide.other.base.CpBaseFragment;
@@ -73,6 +74,13 @@ public class AwaitServiceFragment extends CpBaseFragment implements IAwaitView{
                 pageNum--;
             }
         }
+
+        if(this.orderBean==null||this.orderBean.data==null||this.orderBean.data.size<=0){
+            ((MainActivity) (this.getActivity())).setLayoutChange(false,type);
+        }else{
+            ((MainActivity) (this.getActivity())).setLayoutChange(true,type);
+        }
+
         xrview.loadMoreComplete();
         xrview.refreshComplete();
     }
@@ -156,9 +164,15 @@ public class AwaitServiceFragment extends CpBaseFragment implements IAwaitView{
 
     @Subscribe
     public void onEventMainThread(OrderEvent orderEvent){
-        if(orderEvent.getIsRefresh()){
-            if(type==1){
+
+        if(type==1){
+            if(orderEvent.getType()==1){
                 pageNum=1;
+                awaitServicePresenter.getOrderList();
+            }
+        }else{
+            if(orderEvent.getType()==3){
+                pageNum = 1;
                 awaitServicePresenter.getOrderList();
             }
         }

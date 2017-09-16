@@ -129,60 +129,14 @@ public class OrderActivity extends CpBaseActivty implements IOrderView, RouteSea
     private GeocodeSearch geocoderSearch;
     private String price;
 
-    private void goToPrice() {
-//        mapUtils.searchAddress(nowFrom, locationCity, new Inputtips.InputtipsListener() {
-//            @Override
-//            public void onGetInputtips(List<Tip> list, int i) {
-//                if (i == 1000) {
-//                    if (list != null && list.size() > 0) {
-//                        tvFrom.setText(list.get(0).getName());
-//                        latLonPointFrom = list.get(0).getPoint();
-//                        if (latLonPointTo == null) {
-//                            mapUtils.searchAddress(nowTo, locationCity, new Inputtips.InputtipsListener() {
-//                                @Override
-//                                public void onGetInputtips(List<Tip> list, int i) {
-//                                    if (i == 1000) {
-//                                        if (list != null && list.size() > 0) {
-//                                            tvTo.setText(list.get(0).getName());
-//                                            latLonPointTo = list.get(0).getPoint();
-//                                            if (latLonPointFrom != null && latLonPointTo != null) {
-//                                                mapUtils.getPriceInfo(latLonPointFrom, latLonPointTo, new MapUtils.OnResultData() {
-//                                                    @Override
-//                                                    public void setResult(float tollDistance, String time, int isOut, float distance) {
-//                                                        iTollDistance = tollDistance;
-//                                                        iTime = time;
-//                                                        iIsOut = isOut;
-//                                                        iDistance = distance;
-//                                                        orderPresenter.getPrice();
-//                                                    }
-//                                                });
-//                                            }
-//                                        } else {
-//                                            setOrderId("");
-//                                        }
-//                                    }
-//                                }
-//                            });
-//                        } else {
-//                            mapUtils.getPriceInfo(latLonPointFrom, latLonPointTo, new MapUtils.OnResultData() {
-//                                @Override
-//                                public void setResult(float tollDistance, String time, int isOut, float distance) {
-//                                    iTollDistance = tollDistance;
-//                                    iTime = time;
-//                                    iIsOut = isOut;
-//                                    iDistance = distance;
-//                                    orderPresenter.getPrice();
-//                                }
-//                            });
-//                        }
-//                    } else {
-//                        setOrderId("");
-//                    }
-//                }
-//           }
-//        });
+    //第一次进来就获取航站楼
+    private boolean isOneGetFrom;
 
-        orderPresenter.getCity();
+    private void goToPrice() {
+        if(!isOneGetFrom) {
+            orderPresenter.getCity();
+            isOneGetFrom=true;
+        }
         if (latLonPointTo == null) {
             mapUtils.searchAddress(nowTo, locationCity, new Inputtips.InputtipsListener() {
                 @Override
@@ -211,6 +165,10 @@ public class OrderActivity extends CpBaseActivty implements IOrderView, RouteSea
                     }
                 }
             });
+        }else{
+            if (latLonPointFrom != null) {
+                isGotoAddressInfo();
+            }
         }
 
     }
@@ -348,6 +306,7 @@ public class OrderActivity extends CpBaseActivty implements IOrderView, RouteSea
                 tvFrom.setText(fromAddress);
                 okHttpUtils.showDialog(this);
                 getFrom(fromAddress);
+                System.out.println("==========from=======");
             }
 
         } else if (requestCode == 1001) {
@@ -374,6 +333,7 @@ public class OrderActivity extends CpBaseActivty implements IOrderView, RouteSea
                 tvTo.setText(toAddress);
                 okHttpUtils.showDialog(this);
                 goToPrice();
+                System.out.println("==========to==========");
             }
         }
     }

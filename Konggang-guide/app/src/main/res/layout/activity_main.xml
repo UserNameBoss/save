@@ -215,6 +215,21 @@
                 android:paddingLeft="@dimen/x11"
                 android:paddingTop="@dimen/y34">
 
+                <TextView
+                    android:visibility="gone"
+                    android:id="@+id/tv_changeHint"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="暂无订单"
+                    android:textSize="@dimen/y15"
+                    android:gravity="center"
+                    android:textColor="@color/color_333333"/>
+
+                <LinearLayout
+                    android:id="@+id/ll_changeGuideChild"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
 
                 <LinearLayout
                     android:layout_marginBottom="@dimen/y13"
@@ -393,6 +408,8 @@
 
             </LinearLayout>
 
+            </LinearLayout>
+
             <View
                 android:layout_width="@dimen/dimen_0.5"
                 android:layout_height="match_parent"
@@ -427,6 +444,23 @@
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:paddingTop="@dimen/y34">
+
+            <TextView
+                android:visibility="gone"
+                android:id="@+id/tv_orderHint"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="暂无订单"
+                android:textSize="@dimen/y15"
+                android:gravity="center"
+                android:textColor="@color/color_333333"/>
+
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:id="@+id/ll_orderChild">
 
             <LinearLayout
                 android:layout_marginBottom="@dimen/y13"
@@ -602,6 +636,9 @@
                     android:text=""/>
 
             </LinearLayout>
+
+            </LinearLayout>
+
 
 
         </LinearLayout>

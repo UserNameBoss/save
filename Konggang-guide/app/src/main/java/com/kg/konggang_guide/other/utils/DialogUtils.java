@@ -2,6 +2,7 @@ package com.kg.konggang_guide.other.utils;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.text.SpannableString;
 import android.text.TextUtils;
 import android.view.Display;
 import android.view.Gravity;
@@ -106,7 +107,7 @@ public class DialogUtils {
 
 
     //通知信息
-    public static void hintMessage(Context context, String messsage, String time) {
+    public static void hintMessage(Context context, SpannableString messsage, String time) {
 
         final Dialog dialog = new Dialog(context, R.style.MyDialog02);
         dialog.setContentView(R.layout.dialog_hint_msg);
