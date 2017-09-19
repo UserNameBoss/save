@@ -12,5 +12,7 @@ import com.kg.konggang_guide.other.bean.MessageBean;
 
 public interface IMessageView extends IView {
     String getUserId();
+    String getPageNumber();
+    void setIsSuccess(boolean isSuccess);
     void setMessageBean(MessageBean messageBean);
 }

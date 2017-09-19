@@ -41,10 +41,10 @@ public class OrderPresenter extends CpBasePresenter {
                     JSONObject jsonObject=new JSONObject(data);
                     if(jsonObject.getInt(AppConstants.CODE)==AppConstants.SUCCESS_CODE){
                         JSONObject jsonObject1=jsonObject.getJSONObject(AppConstants.DATA);
-                        iOrderView.setOrderId(jsonObject1.getString("orderId"));
+                        iOrderView.setOrderId(jsonObject1.getString("orderId"),jsonObject1.getInt("type"));
                         iOrderView.setPrice(jsonObject1.getString("price"));
                     }else{
-                        iOrderView.setOrderId("");
+                        iOrderView.setOrderId("",-1);
                         iOrderView.showToask(jsonObject.getString(AppConstants.MSG));
                     }
                 } catch (JSONException e) {
@@ -54,7 +54,7 @@ public class OrderPresenter extends CpBasePresenter {
 
             @Override
             public void onError(String code) {
-                iOrderView.setOrderId("");
+                iOrderView.setOrderId("",-1);
                 iOrderView.showToask(code);
             }
         },iOrderView.getGuideId(),iOrderView.getMileage(),iOrderView.getTime(),iOrderView.getIsOut(),iOrderView.getOutMile(),iOrderView.getCityCode());

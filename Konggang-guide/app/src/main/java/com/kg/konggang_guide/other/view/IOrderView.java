@@ -19,7 +19,7 @@ public interface IOrderView extends IView {
     String getOutMile();
     String getCityCode();
     void setAddress(SearchAddressBean searchAddressBean);
-    void setOrderId(String orderId);
+    void setOrderId(String orderId,int type);
     void setPrice(String price);
     void setCityFrom(CityFromBean cityFrom);
 

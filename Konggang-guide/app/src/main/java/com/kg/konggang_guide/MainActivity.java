@@ -163,6 +163,7 @@ public class MainActivity extends CpBaseActivty implements TextWatcher, IMainVie
     private String order01Type;
     //待接单
     private String order02Type;
+    private String typeOrder;
 
     //待服务订单ID
     private String orderId01;
@@ -251,7 +252,7 @@ public class MainActivity extends CpBaseActivty implements TextWatcher, IMainVie
                 llOrder.setVisibility(View.GONE);
                 llNowOrder.setVisibility(View.GONE);
                 orderId01 = dataEntity.orderId;
-                order01Type = dataEntity.type + "";
+                typeOrder=order01Type = dataEntity.type + "";
                 if ("2".equals(order01Type)) {
                     llFlight01.setVisibility(View.VISIBLE);
                     tvFlight01.setText(dataEntity.flightNumber);
@@ -275,7 +276,7 @@ public class MainActivity extends CpBaseActivty implements TextWatcher, IMainVie
                 llOrder.setVisibility(View.VISIBLE);
                 llNowOrder.setVisibility(View.GONE);
                 orderId02 = dataEntity.orderId;
-                order02Type = dataEntity.type + "";
+                typeOrder=order02Type = dataEntity.type + "";
                 if ("2".equals(dataEntity.type)) {
                     llFlight02.setVisibility(View.VISIBLE);
                     tvFlight.setText(dataEntity.flightNumber);
@@ -503,16 +504,18 @@ public class MainActivity extends CpBaseActivty implements TextWatcher, IMainVie
     }
 
     @Override
-    public void getOrderSuccess() {
-        showToask("接单成功！");
-        orderId02 = "";
-        order02Type = "";
-        tvFlight.setText("");
-        llFlight02.setVisibility(View.GONE);
-        tvOrderTime.setText("");
-        tvOrderPhone.setText("");
-        tvOrderFrom.setText("上车地点");
-        tvOrderTo.setText("下车地点");
+    public void getOrderSuccess(boolean isSuccess) {
+        if(isSuccess) {
+            showToask("接单成功！");
+            orderId02 = "";
+            order02Type = "";
+            tvFlight.setText("");
+            llFlight02.setVisibility(View.GONE);
+            tvOrderTime.setText("");
+            tvOrderPhone.setText("");
+            tvOrderFrom.setText("上车地点");
+            tvOrderTo.setText("下车地点");
+        }
         awaitOrderFragment.refreshData();
         awaitServiceFragment.refreshData();
     }
@@ -533,17 +536,18 @@ public class MainActivity extends CpBaseActivty implements TextWatcher, IMainVie
     }
 
     @Override
-    public void isSendCarSuccess() {
-        showToask("派车成功！");
-
-        orderId01 = "";
-        order01Type = "";
-        tvFlight01.setText("");
-        llFlight01.setVisibility(View.GONE);
-        tvTime.setText("");
-        tvPhone.setText("");
-        tvFrom.setText("上车地点");
-        tvTo.setText("下车地点");
+    public void isSendCarSuccess(boolean isSuccess) {
+        if(isSuccess) {
+            showToask("派车成功！");
+            orderId01 = "";
+            order01Type = "";
+            tvFlight01.setText("");
+            llFlight01.setVisibility(View.GONE);
+            tvTime.setText("");
+            tvPhone.setText("");
+            tvFrom.setText("上车地点");
+            tvTo.setText("下车地点");
+        }
 
         awaitServiceFragment.refreshData();
         mainPresenter.getDriverList();

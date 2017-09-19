@@ -10,86 +10,88 @@
     <include layout="@layout/aaa_app_title"/>
 
     <LinearLayout
-        android:layout_marginTop="@dimen/y9"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/y9"
         android:background="@color/theme_white"
         android:orientation="vertical">
 
         <TextView
-            android:layout_marginTop="@dimen/y33"
-            android:gravity="center_horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/color_333333"
+            android:layout_marginTop="@dimen/y33"
+            android:gravity="center_horizontal"
             android:text="一口价"
-            android:textSize="@dimen/y19"/>
+            android:textColor="@color/color_333333"
+            android:textSize="@dimen/y19" />
 
         <LinearLayout
-            android:layout_marginTop="@dimen/y39"
-            android:gravity="center_horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/y39"
+            android:gravity="center_horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
-                android:textSize="@dimen/y21"
                 android:text="194"
+                android:id="@+id/tv_price"
                 android:textColor="@color/color_f44b4b"
-                />
+                android:textSize="@dimen/y21" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="元"
                 android:textColor="@color/color_f44b4b"
-                android:textSize="@dimen/y15"
-                android:text="元"/>
+                android:textSize="@dimen/y15" />
         </LinearLayout>
 
         <LinearLayout
-            android:gravity="center_horizontal"
-            android:layout_marginBottom="@dimen/y47"
-            android:layout_marginTop="@dimen/y24"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/y47"
+            android:layout_marginTop="@dimen/y24"
+            android:gravity="center_horizontal"
             android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="@dimen/y13"
+                android:text="预估行程"
                 android:textColor="@color/color_333333"
-                android:text="预估行程"/>
+                android:textSize="@dimen/y13" />
 
             <TextView
+                android:id="@+id/tv_mileage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="@dimen/y13"
+                android:text="22"
                 android:textColor="@color/color_38adff"
-                android:text="22"/>
+                android:textSize="@dimen/y13" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="@dimen/y13"
+                android:text="公里，预估时长"
                 android:textColor="@color/color_333333"
-                android:text="公里，预估时长"/>
+                android:textSize="@dimen/y13" />
 
             <TextView
+                android:id="@+id/tv_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="@dimen/y13"
+                android:text="34"
                 android:textColor="@color/color_38adff"
-                android:text="34"/>
+                android:textSize="@dimen/y13" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="@dimen/y13"
+                android:text="分钟"
                 android:textColor="@color/color_333333"
-                android:text="分钟"/>
+                android:textSize="@dimen/y13" />
 
         </LinearLayout>
 

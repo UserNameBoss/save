@@ -69,5 +69,11 @@ public class PriceBean {
         public float totalFee;
         public float totalMoney;
         public int type;
+        public int calType;
+        public float mile;
+        public float pacTime;
+        public float packages;
+        public float overMile;
+        public float overTime;
     }
 }

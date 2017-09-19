@@ -28,6 +28,7 @@ public class MessageActivity extends CpBaseActivty implements IMessageView {
 
     private MessagePresenter messagePresenter;
     private MessageBean messageBean;
+    private int pageNumber=1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +51,8 @@ public class MessageActivity extends CpBaseActivty implements IMessageView {
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         xrlMessage.setLayoutManager(linearLayoutManager);
         messagePresenter=new MessagePresenter(this);
+       // xrlMessage.setPullRefreshEnabled(false);
+        xrlMessage.setLoadingMoreEnabled(true);
     }
 
     @Override
@@ -57,16 +60,31 @@ public class MessageActivity extends CpBaseActivty implements IMessageView {
         MyEvent myEvent=new MyEvent();
         myEvent.setType(2);
         EventBus.getDefault().post(myEvent);
+
     }
 
     @Override
     protected void initDatas() {
         messageAdapter = new MessageAdapter();
         messagePresenter.getMyMessage();
+        xrlMessage.setLoadingListener(new XRecyclerView.LoadingListener() {
+            @Override
+            public void onRefresh() {
+                pageNumber=1;
+                messagePresenter.getMyMessage();
+                //messageBean=null;
+            }
+
+            @Override
+            public void onLoadMore() {
+                pageNumber++;
+                messagePresenter.getMyMessage();
+            }
+        });
         messageAdapter.setOnBtnClickListener(new MessageAdapter.OnBtnClickListener() {
             @Override
             public void clickBtn(int position) {
-                DialogUtils.getChangeGuideDialog(MessageActivity.this,messageBean.data.get(position).content,messageBean.data.get(position).items,messageBean.data.get(position).guide);
+                DialogUtils.getChangeGuideDialog(MessageActivity.this,messageBean.data.list.get(position).content,messageBean.data.list.get(position).items,messageBean.data.list.get(position).guide);
             }
         });
         xrlMessage.setAdapter(messageAdapter);
@@ -83,8 +101,35 @@ public class MessageActivity extends CpBaseActivty implements IMessageView {
     }
 
     @Override
+    public String getPageNumber() {
+        return pageNumber+"";
+    }
+
+    @Override
+    public void setIsSuccess(boolean isSuccess) {
+        if(isSuccess){
+
+        }else{
+            if(pageNumber>1) {
+                pageNumber--;
+            }
+        }
+        xrlMessage.loadMoreComplete();
+        xrlMessage.refreshComplete();
+    }
+
+    @Override
     public void setMessageBean(MessageBean messageBean) {
-        this.messageBean=messageBean;
-        messageAdapter.setMessageBean(messageBean);
+        if(messageBean!=null&&messageBean.data!=null) {
+            System.out.println("======"+messageBean+"======"+pageNumber);
+            if(this.messageBean==null||pageNumber==1) {
+                this.messageBean = messageBean;
+            }else{
+                if(messageBean.data.list!=null){
+                    this.messageBean.data.list.addAll(messageBean.data.list);
+                }
+            }
+            messageAdapter.setMessageBean(this.messageBean);
+        }
     }
 }

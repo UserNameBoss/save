@@ -41,6 +41,7 @@ public class LoginPresenter extends CpBasePresenter {
                     AppState.getInstance().setPicture(data.data.picture);
                     AppState.getInstance().setSex(data.data.sex);
                     AppState.getInstance().setCityId(data.data.cityId);
+                    AppState.getInstance().setAirId(data.data.airId);
                     AppState.getInstance().setLogin(true);
                     iLongView.setLoginBean(data);
                 }else{

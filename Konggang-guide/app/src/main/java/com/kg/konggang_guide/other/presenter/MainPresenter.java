@@ -86,8 +86,9 @@ public class MainPresenter extends CpBasePresenter {
                 try {
                     JSONObject jsonObject=new JSONObject(data);
                     if(jsonObject.getInt(AppConstants.CODE)==AppConstants.SUCCESS_CODE){
-                        iMainView.getOrderSuccess();
+                        iMainView.getOrderSuccess(true);
                     }else{
+                        iMainView.getOrderSuccess(false);
                         iMainView.showToask(jsonObject.getString(AppConstants.MSG));
                     }
 
@@ -111,9 +112,11 @@ public class MainPresenter extends CpBasePresenter {
                 try {
                     JSONObject jsonObject=new JSONObject(data);
                     if(jsonObject.getInt(AppConstants.CODE)==AppConstants.SUCCESS_CODE){
-                        iMainView.isSendCarSuccess();
+                        iMainView.isSendCarSuccess(true);
                     }else{
                         iMainView.showToask(jsonObject.getString(AppConstants.MSG));
+                        iMainView.isSendCarSuccess(false);
+
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();

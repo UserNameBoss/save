@@ -22,12 +22,12 @@ public interface IMainView extends IView {
     //接单的Id
     String getOrderId02();
     String getGuideId();
-    void getOrderSuccess();
+    void getOrderSuccess(boolean isSuccess);
 
     String getType();
     String getDirId();
     String getCityId();
-    void isSendCarSuccess();
+    void isSendCarSuccess(boolean isSuccess);
     void setMessageNoRead(int count);
 
 

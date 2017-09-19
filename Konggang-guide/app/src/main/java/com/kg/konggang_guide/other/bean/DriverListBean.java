@@ -49,5 +49,6 @@ public class DriverListBean {
         public int status;
         public String driverName;
         public String picture;
+        public String driverPhone;
     }
 }

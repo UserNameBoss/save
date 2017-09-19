@@ -147,4 +147,14 @@ public class AppState {
     public String getCityId(){
         return ShareUtils.getInstance().getCache(AppSet.FLAG_CITYID);
     }
+
+    public void setAirId(String airId){
+        if(!TextUtils.isEmpty(cityId)) {
+            ShareUtils.getInstance().setCache(AppSet.FLAG_CITYID, cityId);
+        }
+    }
+
+    public String getAirId(){
+        return ShareUtils.getInstance().getCache(AppSet.FLAG_AIRID);
+    }
 }

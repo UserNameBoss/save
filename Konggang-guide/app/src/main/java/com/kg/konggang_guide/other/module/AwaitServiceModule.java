@@ -38,8 +38,13 @@ public class AwaitServiceModule extends CpBaseModule<String,OrderBean> {
             @Override
             public void onNewData(String data) {
                 DebugUtils.prinlnLog(data);
-                OrderBean orderBean=new Gson().fromJson(data,OrderBean.class);
-                onBaseDataListener.onNewData(orderBean);
+                try {
+                    OrderBean orderBean=new Gson().fromJson(data,OrderBean.class);
+                    onBaseDataListener.onNewData(orderBean);
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+
             }
 
             @Override

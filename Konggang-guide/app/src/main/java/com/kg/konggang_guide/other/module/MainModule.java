@@ -59,8 +59,13 @@ public class MainModule extends CpBaseModule<String,String> {
             @Override
             public void onNewData(String data) {
                 DebugUtils.prinlnLog(data);
-                DriverListBean driverListBean=new Gson().fromJson(data,DriverListBean.class);
-                onBaseDataListener.onNewData(driverListBean);
+                try {
+                    DriverListBean driverListBean=new Gson().fromJson(data,DriverListBean.class);
+                    onBaseDataListener.onNewData(driverListBean);
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+
             }
 
             @Override

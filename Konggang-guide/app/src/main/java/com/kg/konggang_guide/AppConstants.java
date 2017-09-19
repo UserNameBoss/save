@@ -52,4 +52,5 @@ public class AppConstants {
     public static final String INTENT_TITLE="intent_title";
     public static final String INTENT_POSITION="intent_position";
     public static final String INTENT_OTHER="intent_other";
+    public static final String NETHINT="网络异常";
 }

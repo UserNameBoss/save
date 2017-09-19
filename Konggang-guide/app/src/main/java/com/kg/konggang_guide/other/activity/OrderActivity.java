@@ -131,6 +131,7 @@ public class OrderActivity extends CpBaseActivty implements IOrderView, RouteSea
 
     //第一次进来就获取航站楼
     private boolean isOneGetFrom;
+    private int priceType;
 
     private void goToPrice() {
         if(!isOneGetFrom) {
@@ -147,12 +148,17 @@ public class OrderActivity extends CpBaseActivty implements IOrderView, RouteSea
                             latLonPointTo = list.get(0).getPoint();
                             if (latLonPointFrom != null && latLonPointTo != null) {
                                 isGotoAddressInfo();
+                            }else {
+                                okHttpUtils.dismissDialog();
+                                price="0";
+                                orderId=null;
+                                tvPrice.setText(price + "元");
+                                showToask("未找到该地址！");
                             }
                         }else{
                             okHttpUtils.dismissDialog();
                             price="0";
                             orderId=null;
-
                             tvPrice.setText(price + "元");
                             showToask("未找到该地址！");
                         }
@@ -282,8 +288,15 @@ public class OrderActivity extends CpBaseActivty implements IOrderView, RouteSea
                     Bundle bundle2 = new Bundle();
                     bundle2.putString("orderId", orderId);
                     bundle2.putString("cityId",cityCode+"");
-                    //openActivity(PriceDitailsActivity.class, bundle2);
-                    openActivity(FixedPriceActivity.class,bundle2);
+
+                    if(priceType==3) {
+                        bundle2.putString("price",price);
+                        bundle2.putString("time",getTime());
+                        bundle2.putFloat("mileage",iTollDistance);
+                        openActivity(FixedPriceActivity.class, bundle2);
+                    }else{
+                        openActivity(PriceDitailsActivity.class, bundle2);
+                    }
                 } else {
                     showToask("计算预估价失败,请重新选择地址");
                 }
@@ -333,7 +346,6 @@ public class OrderActivity extends CpBaseActivty implements IOrderView, RouteSea
                 tvTo.setText(toAddress);
                 okHttpUtils.showDialog(this);
                 goToPrice();
-                System.out.println("==========to==========");
             }
         }
     }
@@ -397,21 +409,22 @@ public class OrderActivity extends CpBaseActivty implements IOrderView, RouteSea
     }
 
     @Override
-    public void setOrderId(String orderId) {
+    public void setOrderId(String orderId,int type) {
         okHttpUtils.dismissDialog();
         if (TextUtils.isEmpty(orderId)) {
             showToask("计算预估价失败,请重新选择地址");
         } else {
             this.orderId = orderId;
+            priceType=type;
         }
     }
 
     @Override
     public void setPrice(String price) {
         BigDecimal bigDecimal = new BigDecimal(price);
-        this.price=price = bigDecimal.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue() + "";
+        this.price=price = (int)bigDecimal.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue() + "";
 
-        tvPrice.setText(price + "元");
+        tvPrice.setText(price + ".00元");
     }
 
     @Override
@@ -556,13 +569,29 @@ public class OrderActivity extends CpBaseActivty implements IOrderView, RouteSea
                         city = geocodeResult.getGeocodeAddressList().get(0).getCity();
                         if (latLonPointTo != null && latLonPointFrom != null) {
                             isGotoAddressInfo();
+                        }else{
+                            okHttpUtils.dismissDialog();
+                            price="0";
+                            orderId=null;
+                            tvPrice.setText(price + "元");
+                            if(latLonPointTo==null){
+                                showToask("未找到上车地址");
+                            }else{
+                                showToask("未找到下车地址");
+                            }
                         }
                     }else{
                         okHttpUtils.dismissDialog();
+                        price="0";
+                        orderId=null;
+                        tvPrice.setText(price + "元");
                         showToask("未找到该地址！");
 
                     }
                 }else{
+                    price="0";
+                    orderId=null;
+                    tvPrice.setText(price + "元");
                     okHttpUtils.dismissDialog();
                 }
             }
@@ -607,10 +636,10 @@ public class OrderActivity extends CpBaseActivty implements IOrderView, RouteSea
                 DrivePath drivePath = listPath.get(0);
                 iTollDistance = drivePath.getDistance() / 1000;
                 iTime = drivePath.getDuration() / 60 + "";
-                if(iTollDistance<=200) {
+                if(iTollDistance<=500) {
                     getToCityInfo();
                 }else{
-                    showToask("路程超过200公里！");
+                    showToask("行程超过500公里！");
                     okHttpUtils.dismissDialog();
                 }
             }else{

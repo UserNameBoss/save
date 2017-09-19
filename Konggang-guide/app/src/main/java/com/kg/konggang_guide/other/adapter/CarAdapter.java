@@ -66,7 +66,7 @@ public class CarAdapter extends XRecyclerView.Adapter<CarAdapter.ViewHolder> {
         holder.tvName.setText(dataEntity.driverName);
         holder.tvCarLocation.setText(dataEntity.parkPosition);
         holder.tvCarCode.setText(dataEntity.licensePlate);
-
+        holder.tvPhone.setText(dataEntity.driverPhone);
         holder.tvToCar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

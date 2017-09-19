@@ -52,8 +52,13 @@ public class InputAddressModule extends CpBaseModule<String,CityBean> {
         OkHttpUtils.getInstance().getMap(Http.SEARCHADDRESS, hashMap, activity, new OnBaseDataListener<String>() {
             @Override
             public void onNewData(String data) {
-                AddressBean addressBean=new Gson().fromJson(data,AddressBean.class);
-                onBaseDataListener.onNewData(addressBean);
+                try {
+                    AddressBean addressBean=new Gson().fromJson(data,AddressBean.class);
+                    onBaseDataListener.onNewData(addressBean);
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+
             }
 
             @Override

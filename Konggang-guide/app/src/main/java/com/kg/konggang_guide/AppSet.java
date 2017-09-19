@@ -21,5 +21,6 @@ public class AppSet {
     public static final String OLCITY="olCity";
     public static final String LOCATION_CITY="locationCity";
     public static final String FLAG_CITYID="cityId";
+    public static final String FLAG_AIRID="airId";
 
 }

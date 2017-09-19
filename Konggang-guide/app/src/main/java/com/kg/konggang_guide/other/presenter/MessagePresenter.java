@@ -34,15 +34,18 @@ public class MessagePresenter extends CpBasePresenter {
             public void onNewData(MessageBean data) {
                 if(data.code== AppConstants.SUCCESS_CODE){
                     iMessageView.setMessageBean(data);
+                    iMessageView.setIsSuccess(true);
                 }else{
                     iMessageView.showToask(data.msg);
+                    iMessageView.setIsSuccess(false);
                 }
             }
 
             @Override
             public void onError(String code) {
                 iMessageView.showToask(code);
+                iMessageView.setIsSuccess(false);
             }
-        },iMessageView.getUserId());
+        },iMessageView.getUserId(),iMessageView.getPageNumber());
     }
 }

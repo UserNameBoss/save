@@ -68,8 +68,13 @@ public class OrderModule extends CpBaseModule<String,String> {
         OkHttpUtils.getInstance().get(Http.CITYLIST,new OnBaseDataListener<String>() {
             @Override
             public void onNewData(String data) {
-                CityFromBean cityFromBean=new Gson().fromJson(data,CityFromBean.class);
-                onBaseDataListener.onNewData(cityFromBean);
+                try {
+                    CityFromBean cityFromBean=new Gson().fromJson(data,CityFromBean.class);
+                    onBaseDataListener.onNewData(cityFromBean);
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+
             }
 
             @Override
@@ -88,8 +93,13 @@ public class OrderModule extends CpBaseModule<String,String> {
         OkHttpUtils.getInstance().getMap(Http.SEARCHADDRESS, hashMap, new OnBaseDataListener<String>() {
             @Override
             public void onNewData(String data) {
-                SearchAddressBean searchAddressBean=new Gson().fromJson(data,SearchAddressBean.class);
-                onBaseDataListener.onNewData(searchAddressBean);
+                try {
+                    SearchAddressBean searchAddressBean=new Gson().fromJson(data,SearchAddressBean.class);
+                    onBaseDataListener.onNewData(searchAddressBean);
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+
             }
 
 

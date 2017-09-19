@@ -37,8 +37,13 @@ public class LoginModule  extends CpBaseModule<String,LoginBean> {
             OkHttpUtils.getInstance().postJson(Http.LOGIN, jsonObject.toString(), activity, new OnBaseDataListener<String>() {
                 @Override
                 public void onNewData(String data) {
-                    LoginBean loginBean=new Gson().fromJson(data,LoginBean.class);
-                    onBaseDataListener.onNewData(loginBean);
+                    try {
+                        LoginBean loginBean=new Gson().fromJson(data,LoginBean.class);
+                        onBaseDataListener.onNewData(loginBean);
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+
                 }
 
                 @Override

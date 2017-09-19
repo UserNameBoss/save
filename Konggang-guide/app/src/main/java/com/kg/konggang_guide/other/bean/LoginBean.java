@@ -57,5 +57,6 @@ public class LoginBean {
         public Object score;
         public Object dracc;
         public String cityId;
+        public String airId;
     }
 }

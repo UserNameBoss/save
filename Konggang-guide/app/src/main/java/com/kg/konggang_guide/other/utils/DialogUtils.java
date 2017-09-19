@@ -194,7 +194,7 @@ public class DialogUtils {
     }
 
 
-    public static void getChangeGuideDialog(Context context,String content, MessageBean.DataEntity.ItemsEntity itemsEntity, MessageBean.DataEntity.GuideEntity guideEntity) {
+    public static void getChangeGuideDialog(Context context,String content, MessageBean.DataEntity.ListEntity.ItemsEntity itemsEntity, MessageBean.DataEntity.ListEntity.GuideEntity guideEntity) {
 
         final Dialog dialog = new Dialog(context, R.style.MyDialog);
         View view= LayoutInflater.from(context).inflate(R.layout.dialog_get_change,null);
@@ -251,10 +251,10 @@ public class DialogUtils {
             viewHolder.tvTo.setText(itemsEntity.arrivedLocation);
             viewHolder.tvPhone.setText(itemsEntity.telephone);
             viewHolder.tvContent.setText(content);
-            viewHolder.tvId.setText(itemsEntity.id+"");
+            //viewHolder.tvId.setText(itemsEntity.guideId+"");
             if(guideEntity!=null){
                 viewHolder.tvName.setText(guideEntity.name);
-                viewHolder.tvId.setText(guideEntity.userAccount+"");
+                viewHolder.tvId.setText(guideEntity.id+"");
                 viewHolder.tvGuidePhone.setText(guideEntity.telephone);
             }
         }
