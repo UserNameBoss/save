@@ -9,6 +9,7 @@ import com.kg.konggang_guide.other.base.OnBaseDataListener;
 import com.kg.konggang_guide.other.bean.CityFromBean;
 import com.kg.konggang_guide.other.bean.SearchAddressBean;
 import com.kg.konggang_guide.other.utils.OkHttpUtils;
+import com.kg.konggang_guide.other.utils.TimeUtils;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -49,6 +50,7 @@ public class OrderModule extends CpBaseModule<String,String> {
         hashMap.put("type","1");
         hashMap.put("carType","1");
         hashMap.put("cityId",cityId);
+        hashMap.put("upTime", TimeUtils.getCurrentTime());
 
         OkHttpUtils.getInstance().getMap(Http.IMMEDIATELYCACULATEPRICE, hashMap, new OnBaseDataListener<String>() {
             @Override
