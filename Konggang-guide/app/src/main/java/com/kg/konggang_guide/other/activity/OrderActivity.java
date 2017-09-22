@@ -153,7 +153,6 @@ public class OrderActivity extends CpBaseActivty implements IOrderView, RouteSea
                                 price="0";
                                 orderId=null;
                                 tvPrice.setText(price + "元");
-                                showToask("未找到该地址！");
                             }
                         }else{
                             okHttpUtils.dismissDialog();
@@ -165,7 +164,6 @@ public class OrderActivity extends CpBaseActivty implements IOrderView, RouteSea
                     }else{
                         price="0";
                         orderId=null;
-
                         tvPrice.setText(price + "元");
                         okHttpUtils.dismissDialog();
                     }
@@ -319,7 +317,6 @@ public class OrderActivity extends CpBaseActivty implements IOrderView, RouteSea
                 tvFrom.setText(fromAddress);
                 okHttpUtils.showDialog(this);
                 getFrom(fromAddress);
-                System.out.println("==========from=======");
             }
 
         } else if (requestCode == 1001) {
@@ -431,7 +428,14 @@ public class OrderActivity extends CpBaseActivty implements IOrderView, RouteSea
     public void setCityFrom(CityFromBean cityFrom) {
         if (cityFrom != null && cityFrom.data != null) {
             for (int i = 0; i < cityFrom.data.size(); i++) {
-                if (cityFrom.data.get(i).cityName.equals(city)) {
+                String cityName=cityFrom.data.get(i).cityName;
+                if("市".equals(cityName.substring(cityName.length()-1))){
+                    cityName=cityName.substring(0,cityName.length()-1);
+                }
+                if("市".equals(city.substring(city.length()-1))){
+                    city=city.substring(0,city.length()-1);
+                }
+                if (cityName.equals(city)) {
                     cityCode = cityFrom.data.get(i).id;
                     AppState.getInstance().setOlCityCode(cityCode);
                     orderPresenter.getAddress();
@@ -574,11 +578,6 @@ public class OrderActivity extends CpBaseActivty implements IOrderView, RouteSea
                             price="0";
                             orderId=null;
                             tvPrice.setText(price + "元");
-                            if(latLonPointTo==null){
-                                showToask("未找到上车地址");
-                            }else{
-                                showToask("未找到下车地址");
-                            }
                         }
                     }else{
                         okHttpUtils.dismissDialog();

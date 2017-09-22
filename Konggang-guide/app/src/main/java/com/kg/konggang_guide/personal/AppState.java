@@ -149,8 +149,8 @@ public class AppState {
     }
 
     public void setAirId(String airId){
-        if(!TextUtils.isEmpty(cityId)) {
-            ShareUtils.getInstance().setCache(AppSet.FLAG_CITYID, cityId);
+        if(!TextUtils.isEmpty(airId)) {
+            ShareUtils.getInstance().setCache(AppSet.FLAG_AIRID, airId);
         }
     }
 

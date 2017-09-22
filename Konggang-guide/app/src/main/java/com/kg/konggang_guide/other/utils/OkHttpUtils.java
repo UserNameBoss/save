@@ -41,7 +41,7 @@ public class OkHttpUtils {
 
     public void get(String url, String cacheKey, final OnBaseDataListener<String> onBaseDataListener) {
         if (PrefUtils.getNetState(MainApplication.getInstance().getApplicationContext(), 0) == 0) {
-            onBaseDataListener.onError("0x000");
+            onBaseDataListener.onError("网络异常");
             return;
         }
         DebugUtils.prinlnLog("get---request---" + url);
@@ -58,7 +58,7 @@ public class OkHttpUtils {
 
                     @Override
                     public void onError(Call call, Response response, Exception e) {
-                        onBaseDataListener.onError(e.toString());
+                        onBaseDataListener.onError("服务器异常");
 
                     }
                 });
@@ -68,7 +68,7 @@ public class OkHttpUtils {
 
     public void get(String url, final OnBaseDataListener<String> onBaseDataListener) {
         if (PrefUtils.getNetState(MainApplication.getInstance().getApplicationContext(), 0) == 0) {
-            onBaseDataListener.onError("0x000");
+            onBaseDataListener.onError("网络异常");
             return;
         }
         DebugUtils.prinlnLog("get---request---" + url);
@@ -85,7 +85,7 @@ public class OkHttpUtils {
 
                     @Override
                     public void onError(Call call, Response response, Exception e) {
-                        onBaseDataListener.onError(e.toString());
+                        onBaseDataListener.onError("服务器异常");
                     }
                 });
 
@@ -93,7 +93,7 @@ public class OkHttpUtils {
 
     public void getMap(String url, HashMap<String, String> params, final OnBaseDataListener<String> onBaseDataListener) {
         if (PrefUtils.getNetState(MainApplication.getInstance().getApplicationContext(), 0) == 0) {
-            onBaseDataListener.onError("0x000");
+            onBaseDataListener.onError("网络异常");
             return;
         }
         String param = "?";
@@ -115,14 +115,14 @@ public class OkHttpUtils {
 
                     @Override
                     public void onError(Call call, Response response, Exception e) {
-                        onBaseDataListener.onError(e.toString());
+                        onBaseDataListener.onError("服务器异常");
                     }
                 });
 
     }
     public void getMap(String url, HashMap<String, String> params,Activity activity, final OnBaseDataListener<String> onBaseDataListener) {
         if (PrefUtils.getNetState(MainApplication.getInstance().getApplicationContext(), 0) == 0) {
-            onBaseDataListener.onError("0x000");
+            onBaseDataListener.onError("网络异常");
             return;
         }
         showDialog(activity);
@@ -147,7 +147,7 @@ public class OkHttpUtils {
                     @Override
                     public void onError(Call call, Response response, Exception e) {
                         dismissDialog();
-                        onBaseDataListener.onError(e.toString());
+                        onBaseDataListener.onError("服务器异常");
                     }
                 });
 
@@ -155,7 +155,7 @@ public class OkHttpUtils {
 
     public void get(String url, Activity activty, final OnBaseDataListener<String> onBaseDataListener) {
         if (PrefUtils.getNetState(MainApplication.getInstance().getApplicationContext(), 0) == 0) {
-            onBaseDataListener.onError("0x000");
+            onBaseDataListener.onError("网络异常");
             return;
         }
         showDialog(activty);
@@ -175,7 +175,7 @@ public class OkHttpUtils {
                     @Override
                     public void onError(Call call, Response response, Exception e) {
                         dismissDialog();
-                        onBaseDataListener.onError(e.toString());
+                        onBaseDataListener.onError("服务器异常");
                     }
                 });
 
@@ -184,7 +184,7 @@ public class OkHttpUtils {
 
     public void post(String url, HashMap<String, String> map, String cacheKey, final OnBaseDataListener<String> onBaseDataListener) {
         if (PrefUtils.getNetState(MainApplication.getInstance().getApplicationContext(), 0) == 0) {
-            onBaseDataListener.onError("0x000");
+            onBaseDataListener.onError("网络异常");
             return;
         }
         PostRequest post = OkGo.post(url);
@@ -210,7 +210,7 @@ public class OkHttpUtils {
 
                     @Override
                     public void onError(Call call, Response response, Exception e) {
-                        onBaseDataListener.onError(e.toString());
+                        onBaseDataListener.onError("服务器异常");
                     }
                 });
 
@@ -219,7 +219,7 @@ public class OkHttpUtils {
 
     public void post(String url, HashMap<String, String> map, final OnBaseDataListener<String> onBaseDataListener) {
         if (PrefUtils.getNetState(MainApplication.getInstance().getApplicationContext(), 0) == 0) {
-            onBaseDataListener.onError("0x000");
+            onBaseDataListener.onError("网络异常");
             return;
         }
         PostRequest post = OkGo.post(url);
@@ -245,7 +245,7 @@ public class OkHttpUtils {
 
                     @Override
                     public void onError(Call call, Response response, Exception e) {
-                        onBaseDataListener.onError(e.toString());
+                        onBaseDataListener.onError("服务器异常");
                     }
                 });
 
@@ -253,7 +253,7 @@ public class OkHttpUtils {
 
     public void postJson(String url, String json, final OnBaseDataListener<String> onBaseDataListener) {
         if (PrefUtils.getNetState(MainApplication.getInstance().getApplicationContext(), 0) == 0) {
-            onBaseDataListener.onError("0x000");
+            onBaseDataListener.onError("网络异常");
             return;
         }
         PostRequest post = OkGo.post(url);
@@ -288,7 +288,7 @@ public class OkHttpUtils {
 
                     @Override
                     public void onError(Call call, Response response, Exception e) {
-                        onBaseDataListener.onError(e.toString());
+                        onBaseDataListener.onError("服务器异常");
                     }
                 });
 
@@ -296,7 +296,7 @@ public class OkHttpUtils {
 
     public void post(String url, HashMap<String, String> map, Activity activity, final OnBaseDataListener<String> onBaseDataListener) {
         if (PrefUtils.getNetState(MainApplication.getInstance().getApplicationContext(), 0) == 0) {
-            onBaseDataListener.onError("0x000");
+            onBaseDataListener.onError("网络异常");
             return;
         }
         showDialog(activity);
@@ -325,14 +325,14 @@ public class OkHttpUtils {
                     @Override
                     public void onError(Call call, Response response, Exception e) {
                         dismissDialog();
-                        onBaseDataListener.onError(e.toString());
+                        onBaseDataListener.onError("服务器异常");
                     }
                 });
 
     }
     public void postJson(String url, String json, Activity activity, final OnBaseDataListener<String> onBaseDataListener) {
         if (PrefUtils.getNetState(MainApplication.getInstance().getApplicationContext(), 0) == 0) {
-            onBaseDataListener.onError("0x000");
+            onBaseDataListener.onError("网络异常");
             return;
         }
         showDialog(activity);
@@ -370,7 +370,7 @@ public class OkHttpUtils {
                     @Override
                     public void onError(Call call, Response response, Exception e) {
                         dismissDialog();
-                        onBaseDataListener.onError(e.toString());
+                        onBaseDataListener.onError("服务器异常");
                     }
                 });
 
@@ -379,7 +379,7 @@ public class OkHttpUtils {
 
     public void postJsonFile(String url,String json, List<File> files, Activity activity, final OnBaseDataListener<String> onBaseDataListener) {
         if (PrefUtils.getNetState(MainApplication.getInstance().getApplicationContext(), 0) == 0) {
-            onBaseDataListener.onError("0x000");
+            onBaseDataListener.onError("网络异常");
             return;
         }
         showDialog(activity);
@@ -417,7 +417,7 @@ public class OkHttpUtils {
                     @Override
                     public void onError(Call call, Response response, Exception e) {
                         dismissDialog();
-                        onBaseDataListener.onError(e.toString());
+                        onBaseDataListener.onError("服务器异常");
                     }
                 });
 
@@ -426,7 +426,7 @@ public class OkHttpUtils {
 
     public void delete(String url, HashMap<String, String> map, final OnBaseDataListener<String> onBaseDataListener) {
         if (PrefUtils.getNetState(MainApplication.getInstance().getApplicationContext(), 0) == 0) {
-            onBaseDataListener.onError("0x000");
+            onBaseDataListener.onError("网络异常");
             return;
         }
         String reQuestParam = "?";
@@ -446,7 +446,7 @@ public class OkHttpUtils {
 
                     @Override
                     public void onError(Call call, Response response, Exception e) {
-                        onBaseDataListener.onError(e.toString());
+                        onBaseDataListener.onError("服务器异常");
                     }
                 });
 
@@ -454,7 +454,7 @@ public class OkHttpUtils {
 
     public void delete(String url, HashMap<String, String> map, Activity activity, final OnBaseDataListener<String> onBaseDataListener) {
         if (PrefUtils.getNetState(MainApplication.getInstance().getApplicationContext(), 0) == 0) {
-            onBaseDataListener.onError("0x000");
+            onBaseDataListener.onError("网络异常");
             return;
         }
         showDialog(activity);
@@ -477,7 +477,7 @@ public class OkHttpUtils {
                     @Override
                     public void onError(Call call, Response response, Exception e) {
                         dismissDialog();
-                        onBaseDataListener.onError(e.toString());
+                        onBaseDataListener.onError("服务器异常");
                     }
                 });
 
@@ -485,7 +485,7 @@ public class OkHttpUtils {
 
     public void postFile(String url, HashMap<String, String> map, List<File> files, final OnBaseDataListener<String> onBaseDataListener) {
         if (PrefUtils.getNetState(MainApplication.getInstance().getApplicationContext(), 0) == 0) {
-            onBaseDataListener.onError("0x000");
+            onBaseDataListener.onError("网络异常");
             return;
         }
         PostRequest post = OkGo.post(url);
@@ -509,7 +509,7 @@ public class OkHttpUtils {
 
                     @Override
                     public void onError(Call call, Response response, Exception e) {
-                        onBaseDataListener.onError(e.toString());
+                        onBaseDataListener.onError("服务器异常");
                     }
                 });
 
@@ -517,7 +517,7 @@ public class OkHttpUtils {
 
     public void postFile(String url,List<File> files, final OnBaseDataListener<String> onBaseDataListener) {
         if (PrefUtils.getNetState(MainApplication.getInstance().getApplicationContext(), 0) == 0) {
-            onBaseDataListener.onError("0x000");
+            onBaseDataListener.onError("网络异常");
             return;
         }
         PostRequest post = OkGo.post(url);
@@ -535,14 +535,14 @@ public class OkHttpUtils {
 
                     @Override
                     public void onError(Call call, Response response, Exception e) {
-                        onBaseDataListener.onError(e.toString());
+                        onBaseDataListener.onError("服务器异常");
                     }
                 });
 
     }
     public void postFile(String url,List<File> files,Activity activity, final OnBaseDataListener<String> onBaseDataListener) {
         if (PrefUtils.getNetState(MainApplication.getInstance().getApplicationContext(), 0) == 0) {
-            onBaseDataListener.onError("0x000");
+            onBaseDataListener.onError("网络异常");
             return;
         }
         showDialog(activity);
@@ -563,7 +563,7 @@ public class OkHttpUtils {
                     @Override
                     public void onError(Call call, Response response, Exception e) {
                         dismissDialog();
-                        onBaseDataListener.onError(e.toString());
+                        onBaseDataListener.onError("服务器异常");
                     }
                 });
 
@@ -571,7 +571,7 @@ public class OkHttpUtils {
 
     public void postFile(String url, HashMap<String, String> map, List<File> files, Activity activity, final OnBaseDataListener<String> onBaseDataListener) {
         if (PrefUtils.getNetState(MainApplication.getInstance().getApplicationContext(), 0) == 0) {
-            onBaseDataListener.onError("0x000");
+            onBaseDataListener.onError("网络异常");
             return;
         }
         showDialog(activity);
@@ -598,7 +598,7 @@ public class OkHttpUtils {
                     @Override
                     public void onError(Call call, Response response, Exception e) {
                         dismissDialog();
-                        onBaseDataListener.onError(e.toString());
+                        onBaseDataListener.onError("服务器异常");
                     }
                 });
 
@@ -607,7 +607,7 @@ public class OkHttpUtils {
     //上传单一文件
     public void postSingleFile(String url, HashMap<String, String> map, File file, final OnBaseDataListener<String> onBaseDataListener) {
         if (PrefUtils.getNetState(MainApplication.getInstance().getApplicationContext(), 0) == 0) {
-            onBaseDataListener.onError("0x000");
+            onBaseDataListener.onError("网络异常");
             return;
         }
         PostRequest post = OkGo.post(url);
@@ -632,7 +632,7 @@ public class OkHttpUtils {
 
                     @Override
                     public void onError(Call call, Response response, Exception e) {
-                        onBaseDataListener.onError(e.toString());
+                        onBaseDataListener.onError("服务器异常");
                     }
                 });
 
@@ -640,7 +640,7 @@ public class OkHttpUtils {
 
     public void put(String url, HashMap<String, String> map, final OnBaseDataListener<String> onBaseDataListener) {
         if (PrefUtils.getNetState(MainApplication.getInstance().getApplicationContext(), 0) == 0) {
-            onBaseDataListener.onError("0x000");
+            onBaseDataListener.onError("网络异常");
             return;
         }
         String reQuestParam = "?";
@@ -665,7 +665,7 @@ public class OkHttpUtils {
 
                     @Override
                     public void onError(Call call, Response response, Exception e) {
-                        onBaseDataListener.onError(e.toString());
+                        onBaseDataListener.onError("服务器异常");
                     }
                 });
 
@@ -673,7 +673,7 @@ public class OkHttpUtils {
 
     public void put(String url, HashMap<String, String> map, Activity activity, final OnBaseDataListener<String> onBaseDataListener) {
         if (PrefUtils.getNetState(MainApplication.getInstance().getApplicationContext(), 0) == 0) {
-            onBaseDataListener.onError("0x000");
+            onBaseDataListener.onError("网络异常");
             return;
         }
         showDialog(activity);
@@ -701,7 +701,7 @@ public class OkHttpUtils {
                     @Override
                     public void onError(Call call, Response response, Exception e) {
                         dismissDialog();
-                        onBaseDataListener.onError(e.toString());
+                        onBaseDataListener.onError("服务器异常");
                     }
                 });
 
@@ -709,7 +709,7 @@ public class OkHttpUtils {
 
     public void getTemp(String url, HashMap<String, String> map, final OnBaseDataListener<String> onBaseDataListener) {
         if (PrefUtils.getNetState(MainApplication.getInstance().getApplicationContext(), 0) == 0) {
-            onBaseDataListener.onError("0x000");
+            onBaseDataListener.onError("网络异常");
             return;
         }
         String reQuestParam = "?";
@@ -729,7 +729,7 @@ public class OkHttpUtils {
 
                     @Override
                     public void onError(Call call, Response response, Exception e) {
-                        onBaseDataListener.onError(e.toString());
+                        onBaseDataListener.onError("服务器异常");
                     }
                 });
 
@@ -737,7 +737,7 @@ public class OkHttpUtils {
 
     public void getTemp(String url, HashMap<String, String> map, Activity activity, final OnBaseDataListener<String> onBaseDataListener) {
         if (PrefUtils.getNetState(MainApplication.getInstance().getApplicationContext(), 0) == 0) {
-            onBaseDataListener.onError("0x000");
+            onBaseDataListener.onError("网络异常");
             return;
         }
         String reQuestParam = "?";
@@ -761,7 +761,7 @@ public class OkHttpUtils {
                     @Override
                     public void onError(Call call, Response response, Exception e) {
                         dismissDialog();
-                        onBaseDataListener.onError(e.toString());
+                        onBaseDataListener.onError("服务器异常");
                     }
                 });
 

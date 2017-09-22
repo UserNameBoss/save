@@ -75,5 +75,6 @@ public class PriceBean {
         public float packages;
         public float overMile;
         public float overTime;
+        public double sero;
     }
 }

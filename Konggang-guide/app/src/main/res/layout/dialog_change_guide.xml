@@ -37,6 +37,7 @@
             android:background="@null"
             android:hint="请输入接单者账号"
             android:textSize="@dimen/y11"
+            android:maxLength="11"
             android:textColorHint="@color/color_a5a5a5"
             android:textColor="@color/color_a5a5a5"/>
     </LinearLayout>

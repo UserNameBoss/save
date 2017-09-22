@@ -1,7 +1,6 @@
 package com.kg.konggang_guide.other.activity;
 
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -54,6 +53,22 @@ public class PriceActivity extends CpBaseActivty implements IPriceDitailsView {
     TextView tvFarPrice;
     @BindView(R.id.tv_commonTime)
     TextView tv_commonTime;
+    @BindView(R.id.ll_official)
+    LinearLayout llOfficial;
+    @BindView(R.id.ll_business)
+    LinearLayout llBusiness;
+    @BindView(R.id.ll_limousine)
+    LinearLayout llLimousine;
+    @BindView(R.id.tv_startFee)
+    TextView tvStartFee;
+    @BindView(R.id.tv_mileageFee)
+    TextView tvMileageFee;
+    @BindView(R.id.tv_timeFee)
+    TextView tvTimeFee;
+    @BindView(R.id.tv_travelFee)
+    TextView tvTravelFee;
+    @BindView(R.id.tv_eveFee)
+    TextView tvEveFee;
 
     private String cityId;
 
@@ -91,8 +106,8 @@ public class PriceActivity extends CpBaseActivty implements IPriceDitailsView {
 
     @Override
     protected void initDatas() {
-        cityId=getIntent().getExtras().getString("cityId");
-        priceDitailsPresenter=new PriceDitailsPresenter(this);
+        cityId = getIntent().getExtras().getString("cityId");
+        priceDitailsPresenter = new PriceDitailsPresenter(this);
         priceDitailsPresenter.getPriceDitails();
     }
 
@@ -108,13 +123,12 @@ public class PriceActivity extends CpBaseActivty implements IPriceDitailsView {
                 break;
             case R.id.img_limousine:
                 setBackground(2);
-
                 break;
         }
     }
 
-    private void setBackground(int i){
-        switch (i){
+    private void setBackground(int i) {
+        switch (i) {
             case 0:
 
                 tvOfficial.setTextColor(getResources().getColor(R.color.color_38ADFF));
@@ -170,22 +184,24 @@ public class PriceActivity extends CpBaseActivty implements IPriceDitailsView {
 
     @Override
     public void setPriceDitails(PriceDitailsBean priceDitailsBean) {
-        this.priceDitailsBean=priceDitailsBean;
+        this.priceDitailsBean = priceDitailsBean;
 
-        if(this.priceDitailsBean.data!=null&&this.priceDitailsBean.data.size()>0){
-            for(int i=0;i<priceDitailsBean.data.size();i++){
-                if(priceDitailsBean.data.get(i).carType==1){
+        if (this.priceDitailsBean.data != null && this.priceDitailsBean.data.size() > 0) {
+            for (int i = 0; i < priceDitailsBean.data.size(); i++) {
 
-                }
-                switch (priceDitailsBean.data.get(i).carType){
+                switch (priceDitailsBean.data.get(i).carType) {
                     case 1:
-                        dataEntity_official=priceDitailsBean.data.get(i);
+                        dataEntity_official = priceDitailsBean.data.get(i);
+                        llOfficial.setVisibility(View.VISIBLE);
+
                         break;
                     case 2:
-                        dataEntity_business=priceDitailsBean.data.get(i);
+                        dataEntity_business = priceDitailsBean.data.get(i);
+                        llBusiness.setVisibility(View.VISIBLE);
                         break;
                     case 3:
-                        dataEntity_luxury=priceDitailsBean.data.get(i);
+                        dataEntity_luxury = priceDitailsBean.data.get(i);
+                        llLimousine.setVisibility(View.VISIBLE);
                         break;
                 }
             }
@@ -194,61 +210,78 @@ public class PriceActivity extends CpBaseActivty implements IPriceDitailsView {
     }
 
 
-
-
     private void setPagerBackground(int posintion) {
         switch (posintion) {
             case 0:
-                if (dataEntity_official!=null) {
+                if (dataEntity_official != null) {
                     PriceDitailsBean.DataEntity dataEntity = dataEntity_official;
-                    tvPriceMin.setText(dataEntity.startPrice+"元");
-                    tvPriceTime.setText(dataEntity.timePrice+"元/分钟");
-                    tvPriceKm.setText(dataEntity.mileagePrice+"元/公里");
-
-                    tvFarPrice.setText(dataEntity.farAwayPrice+"元/公里");
-                    tv_commonTime.setText("时长费("+dataEntity.commonTime+"分钟)");
+//                    tvPriceMin.setText(dataEntity.startPrice + "元");
+//                    tvPriceTime.setText(dataEntity.timePrice + "元/分钟");
+//                    tvPriceKm.setText(dataEntity.mileagePrice + "元/公里");
+//
+//                    tvFarPrice.setText(dataEntity.farAwayPrice + "元/公里");
+//                    tv_commonTime.setText("时长费(" + dataEntity.commonTime + "分钟)");
                     //tv_commonMileage.setText(dataEntity.commonMileage+"");
+                    tvStartFee.setText(dataEntity.startPrice+"元");
+                    tvMileageFee.setText(dataEntity.mileagePrice+"元/公里");
+                    tvTimeFee.setText(dataEntity.timePrice+"元/分钟");
+                    tvTravelFee.setText(dataEntity.farAwayPrice+"元/公里");
+                    tvEveFee.setText(dataEntity.nightPrice+"元/公里");
                 }
 
                 break;
             case 1:
-                if (dataEntity_business!=null) {
+                if (dataEntity_business != null) {
                     PriceDitailsBean.DataEntity dataEntity = dataEntity_business;
-                    tvPriceMin.setText(dataEntity.startPrice+"元");
-                    tvPriceTime.setText(dataEntity.timePrice+"元/分钟");
-                    tvPriceKm.setText(dataEntity.mileagePrice+"元/公里");
+//                    tvPriceMin.setText(dataEntity.startPrice + "元");
+//                    tvPriceTime.setText(dataEntity.timePrice + "元/分钟");
+//                    tvPriceKm.setText(dataEntity.mileagePrice + "元/公里");
+//
+//                    tvFarPrice.setText(dataEntity.farAwayPrice + "元/公里");
+//                    if (!TextUtils.isEmpty(dataEntity.commonTime)) {
+//                        tv_commonTime.setText("时长费(" + dataEntity.commonTime + "分钟)");
+//                    } else {
+//                        tv_commonTime.setText("时长费(" + 20 + "分钟)");
+//                    }
 
-                    tvFarPrice.setText(dataEntity.farAwayPrice+"元/公里");
-                    if(!TextUtils.isEmpty(dataEntity.commonTime)) {
-                        tv_commonTime.setText("时长费(" + dataEntity.commonTime + "分钟)");
-                    }else{
-                        tv_commonTime.setText("时长费(" + 20+ "分钟)");
-                    }
-                }else{
-                    tvPriceMin.setText(0+"元");
-                    tvPriceTime.setText(0+"元/分钟");
-                    tvPriceKm.setText(0+"元/公里");
+                    tvStartFee.setText(dataEntity.startPrice+"元");
+                    tvMileageFee.setText(dataEntity.mileagePrice+"元/公里");
+                    tvTimeFee.setText(dataEntity.timePrice+"元/分钟");
+                    tvTravelFee.setText(dataEntity.farAwayPrice+"元/公里");
+                    tvEveFee.setText(dataEntity.nightPrice+"元/公里");
+                } else {
+                    tvPriceMin.setText(0 + "元");
+                    tvPriceTime.setText(0 + "元/分钟");
+                    tvPriceKm.setText(0 + "元/公里");
 
-                    tvFarPrice.setText(0+"元/公里");
-                    tv_commonTime.setText("时长费("+0+"分钟)");
+                    tvFarPrice.setText(0 + "元/公里");
+                    tv_commonTime.setText("时长费(" + 0 + "分钟)");
                 }
                 break;
             case 2:
-                if (dataEntity_luxury!=null) {
-                    PriceDitailsBean.DataEntity dataEntity =dataEntity_luxury;
-                    tvPriceMin.setText(dataEntity.startPrice+"元");
-                    tvPriceTime.setText(dataEntity.timePrice+"元/分钟");
-                    tvPriceKm.setText(dataEntity.mileagePrice+"元/公里");
+                if (dataEntity_luxury != null) {
+                    PriceDitailsBean.DataEntity dataEntity = dataEntity_luxury;
+//                    tvPriceMin.setText(dataEntity.startPrice + "元");
+//                    tvPriceTime.setText(dataEntity.timePrice + "元/分钟");
+//                    tvPriceKm.setText(dataEntity.mileagePrice + "元/公里");
+//
+//                    tvFarPrice.setText(dataEntity.farAwayPrice + "元/公里");
+//                    tv_commonTime.setText("时长费(" + dataEntity.commonTime + "分钟)");
 
-                    tvFarPrice.setText(dataEntity.farAwayPrice+"元/公里");
-                    tv_commonTime.setText("时长费("+dataEntity.commonTime+"分钟)");
-                }else{
-                    tvPriceMin.setText(0+"元");
-                    tvPriceTime.setText(0+"元/分钟");
-                    tvPriceKm.setText(0+"元/公里");
 
-                    tvFarPrice.setText(0+"元/公里");
-                    tv_commonTime.setText("时长费("+0+"分钟)");
+                    tvStartFee.setText(dataEntity.startPrice+"元");
+                    tvMileageFee.setText(dataEntity.mileagePrice+"元/公里");
+                    tvTimeFee.setText(dataEntity.timePrice+"元/分钟");
+                    tvTravelFee.setText(dataEntity.farAwayPrice+"元/公里");
+                    tvEveFee.setText(dataEntity.nightPrice+"元/公里");
+
+                } else {
+                    tvPriceMin.setText(0 + "元");
+                    tvPriceTime.setText(0 + "元/分钟");
+                    tvPriceKm.setText(0 + "元/公里");
+
+                    tvFarPrice.setText(0 + "元/公里");
+                    tv_commonTime.setText("时长费(" + 0 + "分钟)");
                 }
                 break;
         }

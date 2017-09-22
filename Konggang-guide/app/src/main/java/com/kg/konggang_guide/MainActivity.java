@@ -2,8 +2,11 @@ package com.kg.konggang_guide;
 
 import android.Manifest;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
+import android.support.v4.util.ArraySet;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.text.Editable;
@@ -170,6 +173,37 @@ public class MainActivity extends CpBaseActivty implements TextWatcher, IMainVie
     //待接单订单ID
     private String orderId02;
     private String cityId;
+    private ArraySet<String> stringSet;
+    private TagAliasCallback tagAliasCallback=new TagAliasCallback() {
+        @Override
+        public void gotResult(int i, String s, Set<String> set) {
+            System.out.println("========="+i+"======"+set.toString());
+            switch (i){
+                case 0:
+                    System.out.println("=======isSuss=======");
+                    ShareUtils.getInstance().setFlag(AppConstants.ISTAG,true);
+                    break;
+                case 6002:
+                    System.out.println("=======fail====");
+                    handler.sendMessageDelayed(handler.obtainMessage(0),10000);
+                    break;
+                default:
+                    System.out.println("====03====");
+                    break;
+            }
+        }
+    };
+    private Handler handler=new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+            switch (msg.what){
+                case 0:
+                    JPushInterface.setTags(getApplicationContext(),stringSet,tagAliasCallback);
+                    break;
+            }
+        }
+    };
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -237,12 +271,17 @@ public class MainActivity extends CpBaseActivty implements TextWatcher, IMainVie
 
 
         //设置别名
-        JPushInterface.setAlias(this, ShareUtils.getInstance().getCache(AppSet.FLAR_USERID), new TagAliasCallback() {
-            @Override
-            public void gotResult(int i, String s, Set<String> set) {
+//        JPushInterface.setAlias(this, ShareUtils.getInstance().getCache(AppSet.FLAR_USERID), new TagAliasCallback() {
+//            @Override
+//            public void gotResult(int i, String s, Set<String> set) {
+//
+//            }
+//        });
+        //设置标签
+        stringSet=new ArraySet<>();
+        stringSet.add(AppState.getInstance().getAirId());
+        JPushInterface.setTags(this, stringSet, tagAliasCallback);
 
-            }
-        });
 
         awaitServiceFragment = new AwaitServiceFragment();
         awaitServiceFragment.setOnFragmentData(new AwaitServiceFragment.OnFragmentData() {

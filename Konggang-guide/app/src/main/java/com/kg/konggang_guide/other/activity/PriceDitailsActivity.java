@@ -3,6 +3,7 @@ package com.kg.konggang_guide.other.activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.kg.konggang_guide.R;
@@ -18,7 +19,6 @@ import java.text.DecimalFormat;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-import static com.kg.konggang_guide.R.id.tv_comboFee;
 import static com.kg.konggang_guide.R.id.tv_price;
 
 public class PriceDitailsActivity extends CpBaseActivty implements IPriceView {
@@ -49,8 +49,7 @@ public class PriceDitailsActivity extends CpBaseActivty implements IPriceView {
     TextView tvPrice02;
     @BindView(R.id.tv_combo)
     TextView tvCombo;
-    @BindView(tv_comboFee)
-    TextView tvComboFee;
+
     @BindView(R.id.tv_changemileage02)
     TextView tvChangemileage02;
     @BindView(R.id.tv_mileageMoney02)
@@ -73,6 +72,48 @@ public class PriceDitailsActivity extends CpBaseActivty implements IPriceView {
     LinearLayout llPriceType02;
     @BindView(R.id.tv_travelOver)
     TextView tvTravelOver;
+    @BindView(R.id.rl_startPrice)
+    RelativeLayout rlStartPrice;
+    @BindView(R.id.rl_mileageMoney)
+    RelativeLayout rlMileageMoney;
+    @BindView(R.id.rl_timeFee)
+    RelativeLayout rlTimeFee;
+    @BindView(R.id.tv_traveOver)
+    TextView tvTraveOver;
+    @BindView(R.id.rl_travelFee)
+    RelativeLayout rlTravelFee;
+    @BindView(R.id.rl_cityFee)
+    RelativeLayout rlCityFee;
+    @BindView(R.id.rl_bridgePrice)
+    RelativeLayout rlBridgePrice;
+    @BindView(R.id.tv_sero)
+    TextView tvSero;
+    @BindView(R.id.rl_sero)
+    RelativeLayout rlSero;
+    @BindView(R.id.tv_comboFee)
+    TextView tvComboFee;
+    @BindView(R.id.rl_comboFee)
+    RelativeLayout rlComboFee;
+    @BindView(R.id.rl_mileageMoney02)
+    RelativeLayout rlMileageMoney02;
+    @BindView(R.id.rl_changeTimeFee02)
+    RelativeLayout rlChangeTimeFee02;
+    @BindView(R.id.rl_travelFee02)
+    RelativeLayout rlTravelFee02;
+    @BindView(R.id.rl_nightFee)
+    RelativeLayout rlNightFee;
+    @BindView(R.id.rl_cityFee02)
+    RelativeLayout rlCityFee02;
+    @BindView(R.id.rl_bridgePrice02)
+    RelativeLayout rlBridgePrice02;
+    @BindView(R.id.tv_sero02)
+    TextView tvSero02;
+    @BindView(R.id.rl_sero02)
+    RelativeLayout rlSero02;
+    @BindView(R.id.tv_eveFee)
+    TextView tvEveFee;
+    @BindView(R.id.rl_eveFee)
+    RelativeLayout rlEveFee;
     private String orderId;
     private PricePresenter pricePresenter;
 
@@ -138,44 +179,115 @@ public class PriceDitailsActivity extends CpBaseActivty implements IPriceView {
             if (dataEntity.calType == 2) {
                 llPriceType01.setVisibility(View.VISIBLE);
                 llPriceType02.setVisibility(View.GONE);
-                tvMileageMoney.setText(priceBean.data.get(0).mileageMoney + "元");
-                tvMileage.setText("里程费(" + getBig1(priceBean.data.get(0).mileage) + "公里)");
-                tvTime.setText("时长费(" + (int)priceBean.data.get(0).time + "分钟)");
-                tvTimeFee.setText(priceBean.data.get(0).timeFee + "元");
-                tvTravelFee.setText(priceBean.data.get(0).travelFee + "元");
-                tvCityFee.setText(priceBean.data.get(0).cityFee + "元");
-                tvStartPrice.setText(priceBean.data.get(0).startFee + "元");
-
-                tvPrice.setText(((int)(priceBean.data.get(0).totalFee)) + ".00");
-                tvBridgePrice.setText(dataEntity.serveiceCharge + "元");
-                if(dataEntity.mileage>15) {
-                    tvTravelOver.setText("远途费(" + getBig1(dataEntity.mileage-15)+"公里)");
+                if (dataEntity.mileageMoney > 0) {
+                    tvMileageMoney.setText(dataEntity.mileageMoney + "元");
+                } else {
+                    rlMileageMoney.setVisibility(View.GONE);
                 }
+                tvMileage.setText("里程费(" + getBig1(priceBean.data.get(0).mileage) + "公里)");
+                tvTime.setText("时长费(" + (int) priceBean.data.get(0).time + "分钟)");
+
+                if (dataEntity.timeFee > 0) {
+                    tvTimeFee.setText(dataEntity.timeFee + "元");
+                } else {
+                    rlTimeFee.setVisibility(View.GONE);
+                }
+
+                if (dataEntity.travelFee > 0) {
+                    tvTravelFee.setText(dataEntity.travelFee + "元");
+                } else {
+                    rlTravelFee.setVisibility(View.GONE);
+                }
+
+                if (dataEntity.cityFee > 0) {
+                    tvCityFee.setText(dataEntity.cityFee + "元");
+                } else {
+                    rlCityFee.setVisibility(View.GONE);
+                }
+
+                if (dataEntity.startFee > 0) {
+                    tvStartPrice.setText(dataEntity.startFee + "元");
+                } else {
+                    rlStartPrice.setVisibility(View.GONE);
+                }
+
+                if (dataEntity.eveFee > 0) {
+                    tvEveFee.setText(dataEntity.eveFee + "元");
+                } else {
+                    rlEveFee.setVisibility(View.GONE);
+                }
+
+                tvPrice.setText((int) (dataEntity.totalFee) + ".00");
+                if (dataEntity.serveiceCharge > 0) {
+                    tvBridgePrice.setText(dataEntity.serveiceCharge + "元");
+                } else {
+                    rlBridgePrice.setVisibility(View.GONE);
+                }
+                if (dataEntity.mileage > 15) {
+                    tvTravelOver.setText("远途费(" + getBig1(dataEntity.mileage - 15) + "公里)");
+                }
+
+                tvSero.setText(dataEntity.sero + "元");
 
             } else if (dataEntity.calType == 1) {
                 llPriceType01.setVisibility(View.GONE);
                 llPriceType02.setVisibility(View.VISIBLE);
-                tvPrice02.setText((int)(priceBean.data.get(0).totalFee) + ".00");
+
+                tvPrice02.setText((int) priceBean.data.get(0).totalFee + ".00");
                 tvCombo.setText("套餐价(含" + dataEntity.mile + "公里，" + dataEntity.pacTime + "分钟)");
-                tvMileageMoney02.setText(dataEntity.mileageCharge + "元");
-                tvChangeTimeFee02.setText(dataEntity.timeCharge + "元");
-                tvTravelFee02.setText(dataEntity.travelFee + "元");
-                tvNightFee.setText(dataEntity.eveFee + "元");
-                tvCityFee02.setText(dataEntity.cityFee + "元");
-                tvBridgePrice02.setText(dataEntity.serveiceCharge + "元");
-                tvComboFee.setText(dataEntity.packages + "元");
-                tvChangemileage02.setText("超里程费(" + getBig1(dataEntity.overMile) + "公里)");
-                tvTime02.setText("超时长费(" + (int)dataEntity.overTime + "分钟)");
-                if(dataEntity.mileage>15) {
-                    tvTravelOver.setText("远途费(" + getBig1(dataEntity.mileage-15)+"公里)");
+                if (dataEntity.mileageCharge > 0) {
+                    tvMileageMoney02.setText(dataEntity.mileageCharge + "元");
+                } else {
+                    rlMileageMoney02.setVisibility(View.GONE);
                 }
+
+                if (dataEntity.timeCharge > 0) {
+                    tvChangeTimeFee02.setText(dataEntity.timeCharge + "元");
+                } else {
+                    rlChangeTimeFee02.setVisibility(View.GONE);
+                }
+
+                if (dataEntity.travelFee > 0) {
+                    tvTravelFee02.setText(dataEntity.travelFee + "元");
+                } else {
+                    rlTravelFee02.setVisibility(View.GONE);
+                }
+
+                if (dataEntity.eveFee > 0) {
+                    tvNightFee.setText(dataEntity.eveFee + "元");
+                } else {
+                    rlNightFee.setVisibility(View.GONE);
+                }
+
+                if (dataEntity.cityFee > 0) {
+                    tvCityFee02.setText(dataEntity.cityFee + "元");
+                } else {
+                    rlCityFee02.setVisibility(View.GONE);
+                }
+
+                if (dataEntity.serveiceCharge > 0) {
+                    tvBridgePrice02.setText(dataEntity.serveiceCharge + "元");
+                } else {
+                    rlBridgePrice02.setVisibility(View.GONE);
+                }
+                if (dataEntity.packages > 0) {
+                    tvComboFee.setText(dataEntity.packages + "元");
+                } else {
+                    rlComboFee.setVisibility(View.GONE);
+                }
+                tvChangemileage02.setText("超里程费(" + getBig1(dataEntity.overMile) + "公里)");
+                tvTime02.setText("超时长费(" + (int) dataEntity.overTime + "分钟)");
+                if (dataEntity.mileage > 15) {
+                    tvTravelOver.setText("远途费(" + getBig1(dataEntity.mileage - 15) + "公里)");
+                }
+                tvSero02.setText(dataEntity.sero + "元");
             }
 
         }
     }
 
 
-    public String getBig1(double price){
+    public String getBig1(double price) {
         DecimalFormat df = new DecimalFormat("0.0");//想要的格式
         String score = df.format(price);//要将字符串转换成double型，再格式化
         return score;

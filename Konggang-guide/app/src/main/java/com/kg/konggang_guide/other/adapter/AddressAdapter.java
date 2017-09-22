@@ -107,6 +107,7 @@ public class AddressAdapter extends RecyclerView.Adapter<AddressAdapter.ViewHold
             if(addressBean != null && addressBean.data != null) {
                 arrayList.clear();
                 arrayListName.clear();
+                arrayIdList.clear();
                 for(int i=0;i<addressBean.data.size();i++){
                     AddressBean.DataEntity dataEntity=addressBean.data.get(i);
                     if(!TextUtils.isEmpty(dataEntity.terminalBuilding)){

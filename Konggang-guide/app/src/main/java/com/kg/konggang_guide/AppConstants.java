@@ -46,6 +46,7 @@ public class AppConstants {
     public static final String APP_ID="wxded2bcd1d1f8e1ba";
     public static final String RESULT_STATE="success";
     public static final String ADD_STATE="添加成功";
+    public static final String ISTAG="isTag";
 
     public static final String INTENT_TYPE="intent_type";
     public static final String INTENT_DATA="intent_data";

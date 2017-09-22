@@ -54,16 +54,16 @@ public class MessageAdapter extends XRecyclerView.Adapter<MessageAdapter.ViewHol
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
         MessageBean.DataEntity.ListEntity dataEntity=messageBean.data.list.get(position);
-        if(dataEntity.items.type==1){
+        if(dataEntity.items!=null&&dataEntity.items.type==1){
             holder.tvType.setText("改派订单");
             holder.imgIcon.setImageResource(R.mipmap.order_to_order);
             holder.tvDispose.setVisibility(View.VISIBLE);
-        }else if(dataEntity.items.type==2){
+        }else if(dataEntity.items!=null&&dataEntity.items.type==2){
             holder.tvType.setText("预约订单");
             holder.imgIcon.setImageResource(R.mipmap.booking_order);
             holder.tvDispose.setVisibility(View.INVISIBLE);
 
-        }else if(dataEntity.items.type==3){
+        }else if(dataEntity.items!=null&&dataEntity.items.type==3){
             holder.tvType.setText("立即订单");
             holder.tvDispose.setVisibility(View.INVISIBLE);
             holder.tvDispose.setVisibility(View.INVISIBLE);
