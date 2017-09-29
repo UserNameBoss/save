@@ -42,6 +42,7 @@ public class LoginModule  extends CpBaseModule<String,LoginBean> {
                         onBaseDataListener.onNewData(loginBean);
                     }catch (Exception e){
                         e.printStackTrace();
+                        onBaseDataListener.onError("网络异常");
                     }
 
                 }

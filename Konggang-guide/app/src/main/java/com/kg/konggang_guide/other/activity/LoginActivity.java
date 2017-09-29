@@ -230,4 +230,9 @@ public class LoginActivity extends CpBaseActivty implements TextWatcher,ILongVie
         openActivity(MainActivity.class);
         finish();
     }
+
+    @Override
+    public void setSuccess(boolean isSuccess) {
+
+    }
 }

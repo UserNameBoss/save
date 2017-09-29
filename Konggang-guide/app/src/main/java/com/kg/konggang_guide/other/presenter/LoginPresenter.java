@@ -44,14 +44,18 @@ public class LoginPresenter extends CpBasePresenter {
                     AppState.getInstance().setAirId(data.data.airId);
                     AppState.getInstance().setLogin(true);
                     iLongView.setLoginBean(data);
+                    iLongView.setSuccess(true);
                 }else{
                     iLongView.showToask(data.msg);
+                    iLongView.setSuccess(false);
+
                 }
             }
 
             @Override
             public void onError(String code) {
                 iLongView.showToask(code);
+                iLongView.setSuccess(false);
             }
         },iLongView.getPhone(),iLongView.getPassword());
     }

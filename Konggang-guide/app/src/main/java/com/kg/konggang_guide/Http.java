@@ -11,12 +11,15 @@ public class Http {
 
     private Http() {
     }
-    public static final String ROOT = "http://120.25.237.198:8810/api/";//正式服务地址
-    //public static final String ROOT = "http://39.108.239.116:8080/api/";//客户服务地址
+//    public static final String ROOT = "http://120.25.237.198:8810/api/";//正式服务地址
+    public static final String ROOT = "http://39.108.239.116:8080/api/";//客户服务地址
 
     //public static final String ROOT = "http://192.168.1.26:8080/api/";//正式服务地址
 
-
+    /**
+     * 启动页
+     */
+    public static final String STARTPAGE = ROOT+"home/getPicture";
     /**
      * 登录
      */

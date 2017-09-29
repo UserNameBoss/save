@@ -14,4 +14,5 @@ public interface ILongView extends IView {
     String getPhone();
     String getPassword();
     void setLoginBean(LoginBean loginBean);
+    void setSuccess(boolean isSuccess);
 }
