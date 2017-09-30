@@ -75,6 +75,7 @@ public class SplashActivity extends CpBaseActivty implements ILongView {
                     JSONObject jsonObject = new JSONObject(data);
                     if (jsonObject.getInt("code") != 200) {
                         showToask(jsonObject.getString("msg"));
+                        startAnim(null);
                         return;
                     }
                 } catch (Exception e) {

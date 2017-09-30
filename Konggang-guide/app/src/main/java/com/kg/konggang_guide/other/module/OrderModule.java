@@ -137,6 +137,7 @@ public class OrderModule extends CpBaseModule<String,String> {
         String guideId=parm[19];
         String cityId=parm[20];
         String airId=parm[21];
+        String totalMoney=parm[22];
 
 
 
@@ -165,7 +166,7 @@ public class OrderModule extends CpBaseModule<String,String> {
             jsonObject.put("cityId",cityId);
             jsonObject.put("airId",airId);
             //  jsonObject.put("arriedTime", TimeUtils.getAllDate(System.currentTimeMillis()));
-
+            jsonObject.put("totalMoney",totalMoney);
             OkHttpUtils.getInstance().postJson(Http.IMMEDIATELYORDER, jsonObject.toString(), activity, new OnBaseDataListener<String>() {
                 @Override
                 public void onNewData(String data) {

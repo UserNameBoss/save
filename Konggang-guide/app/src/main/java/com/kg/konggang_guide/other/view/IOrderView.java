@@ -43,5 +43,6 @@ public interface IOrderView extends IView {
     String getArriredTime();
     String getOTime();
     String getArriedTime();
+    String getMoney();
     void isOrderSuccess();
 }

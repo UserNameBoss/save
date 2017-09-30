@@ -69,6 +69,8 @@ public class PriceActivity extends CpBaseActivty implements IPriceDitailsView {
     TextView tvTravelFee;
     @BindView(R.id.tv_eveFee)
     TextView tvEveFee;
+    @BindView(R.id.tv_cityFee)
+    TextView tvCityFee;
 
     private String cityId;
 
@@ -134,7 +136,6 @@ public class PriceActivity extends CpBaseActivty implements IPriceDitailsView {
                 tvOfficial.setTextColor(getResources().getColor(R.color.color_38ADFF));
                 tvBusiness.setTextColor(getResources().getColor(R.color.color_333333));
                 tvLimousine.setTextColor(getResources().getColor(R.color.color_333333));
-
                 vLineOfficial.setVisibility(View.VISIBLE);
                 vLineBusiness.setVisibility(View.INVISIBLE);
                 vLineLimousine.setVisibility(View.INVISIBLE);
@@ -222,11 +223,12 @@ public class PriceActivity extends CpBaseActivty implements IPriceDitailsView {
 //                    tvFarPrice.setText(dataEntity.farAwayPrice + "元/公里");
 //                    tv_commonTime.setText("时长费(" + dataEntity.commonTime + "分钟)");
                     //tv_commonMileage.setText(dataEntity.commonMileage+"");
-                    tvStartFee.setText(dataEntity.startPrice+"元");
-                    tvMileageFee.setText(dataEntity.mileagePrice+"元/公里");
-                    tvTimeFee.setText(dataEntity.timePrice+"元/分钟");
-                    tvTravelFee.setText(dataEntity.farAwayPrice+"元/公里");
-                    tvEveFee.setText(dataEntity.nightPrice+"元/公里");
+                    tvStartFee.setText(dataEntity.startPrice + "元");
+                    tvMileageFee.setText(dataEntity.mileagePrice + "元/公里");
+                    tvTimeFee.setText(dataEntity.timePrice + "元/分钟");
+                    tvTravelFee.setText(dataEntity.farAwayPrice + "元/公里");
+                    tvEveFee.setText(dataEntity.nightPrice + "元/公里");
+                    tvCityFee.setText(dataEntity.outTownPrice+"元/公里");
                 }
 
                 break;
@@ -244,11 +246,13 @@ public class PriceActivity extends CpBaseActivty implements IPriceDitailsView {
 //                        tv_commonTime.setText("时长费(" + 20 + "分钟)");
 //                    }
 
-                    tvStartFee.setText(dataEntity.startPrice+"元");
-                    tvMileageFee.setText(dataEntity.mileagePrice+"元/公里");
-                    tvTimeFee.setText(dataEntity.timePrice+"元/分钟");
-                    tvTravelFee.setText(dataEntity.farAwayPrice+"元/公里");
-                    tvEveFee.setText(dataEntity.nightPrice+"元/公里");
+                    tvStartFee.setText(dataEntity.startPrice + "元");
+                    tvMileageFee.setText(dataEntity.mileagePrice + "元/公里");
+                    tvTimeFee.setText(dataEntity.timePrice + "元/分钟");
+                    tvTravelFee.setText(dataEntity.farAwayPrice + "元/公里");
+                    tvEveFee.setText(dataEntity.nightPrice + "元/公里");
+                    tvCityFee.setText(dataEntity.outTownPrice+"元/公里");
+
                 } else {
                     tvPriceMin.setText(0 + "元");
                     tvPriceTime.setText(0 + "元/分钟");
@@ -256,6 +260,8 @@ public class PriceActivity extends CpBaseActivty implements IPriceDitailsView {
 
                     tvFarPrice.setText(0 + "元/公里");
                     tv_commonTime.setText("时长费(" + 0 + "分钟)");
+                    tvCityFee.setText(0+"元/公里");
+
                 }
                 break;
             case 2:
@@ -269,11 +275,13 @@ public class PriceActivity extends CpBaseActivty implements IPriceDitailsView {
 //                    tv_commonTime.setText("时长费(" + dataEntity.commonTime + "分钟)");
 
 
-                    tvStartFee.setText(dataEntity.startPrice+"元");
-                    tvMileageFee.setText(dataEntity.mileagePrice+"元/公里");
-                    tvTimeFee.setText(dataEntity.timePrice+"元/分钟");
-                    tvTravelFee.setText(dataEntity.farAwayPrice+"元/公里");
-                    tvEveFee.setText(dataEntity.nightPrice+"元/公里");
+                    tvStartFee.setText(dataEntity.startPrice + "元");
+                    tvMileageFee.setText(dataEntity.mileagePrice + "元/公里");
+                    tvTimeFee.setText(dataEntity.timePrice + "元/分钟");
+                    tvTravelFee.setText(dataEntity.farAwayPrice + "元/公里");
+                    tvEveFee.setText(dataEntity.nightPrice + "元/公里");
+                    tvCityFee.setText(dataEntity.outTownPrice+"元/公里");
+
 
                 } else {
                     tvPriceMin.setText(0 + "元");
@@ -282,6 +290,7 @@ public class PriceActivity extends CpBaseActivty implements IPriceDitailsView {
 
                     tvFarPrice.setText(0 + "元/公里");
                     tv_commonTime.setText("时长费(" + 0 + "分钟)");
+                    tvCityFee.setText(0+"元/公里");
                 }
                 break;
         }

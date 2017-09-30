@@ -135,6 +135,6 @@ public class OrderPresenter extends CpBasePresenter {
                 iOrderView.getEstimatePrice(),iOrderView.getCity(),iOrderView.getAirport(),iOrderView.getTerminalBuilding(),
                 iOrderView.getOTime(),iOrderView.getArriedTime(),iOrderView.getDeparturePosition(),
                 iOrderView.getArrivedPosition(),iOrderView.getArriredTime(),iOrderView.getTime(),iOrderView.getMileage(),
-                iOrderView.getGuideId(),iOrderView.getCityCode(),iOrderView.getAirId());
+                iOrderView.getGuideId(),iOrderView.getCityCode(),iOrderView.getAirId(),iOrderView.getMoney());
     }
 }

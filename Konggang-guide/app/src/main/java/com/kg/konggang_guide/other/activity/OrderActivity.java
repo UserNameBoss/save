@@ -543,6 +543,11 @@ public class OrderActivity extends CpBaseActivty implements IOrderView, RouteSea
     }
 
     @Override
+    public String getMoney() {
+        return price+"";
+    }
+
+    @Override
     public void isOrderSuccess() {
         showToask("下单成功！");
         MyEvent myEvent=new MyEvent();
